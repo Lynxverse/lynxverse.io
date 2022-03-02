@@ -1,10 +1,7 @@
-import Halo from "./components/Hallo";
+import { LandingPage } from "components/pages/LandingPage";
+
 function App() {
-  return (
-    <div className="App">
-      <Halo />
-    </div>
-  );
+  return <LandingPage />;
 }
 
 export default App;
