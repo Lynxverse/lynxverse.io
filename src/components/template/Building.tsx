@@ -4,7 +4,12 @@ import { IMAGE } from "utils/images";
 const Building = () => {
   return (
     <Section size={false}>
-      <img className="mx-auto py-10" src={IMAGE.building} alt="building" />
+      <img
+        className="mx-auto mb-16"
+        width={700}
+        src={IMAGE.building}
+        alt="building"
+      />
     </Section>
   );
 };

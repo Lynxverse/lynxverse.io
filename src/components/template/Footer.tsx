@@ -4,9 +4,8 @@ import { FaTwitter } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="relative">
-      <img className="absolute bottom-0" src={IMAGE.silhoute2} alt="silhoute" />
       <Section size={false}>
-        <footer className="space-y-10 py-24">
+        <footer className="z-[100] space-y-10 py-24">
           <div className="flex items-center justify-between">
             <img src={IMAGE.logo} alt="logo" />
             <ul className="flex space-x-3 font-description text-white">
@@ -23,6 +22,11 @@ const Footer = () => {
           </div>
         </footer>
       </Section>
+      <img
+        className="absolute bottom-0  w-full"
+        src={IMAGE.silhoute2}
+        alt="silhoute"
+      />
     </div>
   );
 };

@@ -26,7 +26,7 @@ const Unique = () => {
             description="marketplace: Users can create NFT assets (music for meditation, yoga lessons, and more) to assist user’s therapy. All assets can be purchased using $lynx token."
           />
         </div>
-        <div className="mx-auto grid grid-cols-1 gap-5 py-40 md:w-9/12 md:grid-cols-3">
+        <div className="mx-auto grid grid-cols-1 gap-5 py-40 md:w-10/12 md:grid-cols-3">
           <Card
             image={IMAGE.assets05}
             description="Security: Using the blockchain, users can overcome any stigma associated with mental health issues that may make them feel ashamed or as an outcast if they need to work directly with other people."

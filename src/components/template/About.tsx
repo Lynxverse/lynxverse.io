@@ -4,17 +4,17 @@ const About = () => {
   return (
     <div className="relative">
       <img
-        className="absolute -top-1"
+        className="absolute top-0 w-full"
         src={IMAGE.gradientbtm}
         alt="gradientbtm"
       />
       <Section size={false}>
-        <div className="relative flex flex-col items-center justify-center space-y-10 py-36 md:flex-row md:space-y-0">
+        <div className="relative flex  flex-col-reverse items-center justify-center space-y-10 py-36 md:flex-row md:space-y-0">
           <div className="space-y-4 md:w-7/12">
-            <h1 className="font-title text-title text-white">
+            <h1 className="text-center font-title text-title text-white md:text-left">
               What is Lynxverse?
             </h1>
-            <p className="font-description text-description leading-relaxed text-white">
+            <p className="text-justify font-description text-description leading-relaxed text-[#D8D8D8]">
               A multichain gamification metaverse using CBT implemented on VR to
               help mental illness patients and raise awareness. This is the
               first game on the blockchain focused on mental health with

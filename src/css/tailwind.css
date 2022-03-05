@@ -2,3 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Russo+One&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    display : none
+}
+
+.animate-bounce {
+  animation: bounce 4s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(.17,.67,.86,.66), 0.66);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(.17,.67,.86,.66)
+  }
+}
+
+.swiper-button-next {
+  background-image: url('../assets/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+}
+
+.swiper-button-next::after {
+  display: none;
+}
+
+.swiper-button-prev {
+  background-image: url('../assets/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.swiper-button-prev::after {
+  display: none;
+}

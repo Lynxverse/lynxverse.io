@@ -14,8 +14,35 @@ const IMAGE = {
     assets05: require('../assets/images/assets05.svg').default,
     assets06: require('../assets/images/assets06.svg').default,
     assets07: require('../assets/images/assets07.svg').default,
+    incomeassets01: require('../assets/images/incomeassets01.svg').default,
+    incomeassets02: require('../assets/images/incomeassets02.svg').default,
+    incomeassets03: require('../assets/images/incomeassets03.svg').default,
+    incomeassets04: require('../assets/images/incomeassets04.svg').default,
     building: require('../assets/images/building.svg').default,
     frame: require('../assets/images/frame.svg').default,
+    stars: require('../assets/images/stars.svg').default,
 }
 
-export { IMAGE }
+const SwiperImage = [
+    {
+        title: 'Swiper Image 2',
+        image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+    },
+    {
+        title: 'Swiper Image 2',
+        image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+    },
+    {
+        title: 'Swiper Image 2',
+        image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+    },
+    {
+        title: 'Swiper Image 2',
+        image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+    },
+    {
+        title: 'Swiper Image 2',
+        image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
+    }
+]
+export { IMAGE, SwiperImage }
