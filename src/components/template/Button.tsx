@@ -11,7 +11,9 @@ const Button = (props: IButton) => {
     else return primaryStyle;
   };
   return (
-    <button className={`rounded-full ${renderStyle()} px-10 font-title`}>
+    <button
+      className={`rounded-full ${renderStyle()} px-4 font-title text-[0.7rem] md:px-10 md:text-lg`}
+    >
       {props.title}
     </button>
   );

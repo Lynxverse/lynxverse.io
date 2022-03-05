@@ -10,13 +10,13 @@ import { Income } from "components/template/Income";
 import { Illustration } from "components/template/Illustration";
 const LandingPage = () => {
   return (
-    <div className="bg-gradient-to-b from-[#081850] via-[#081850] to-[#2B99B1]">
+    <div className="w-full overflow-hidden bg-gradient-to-b from-[#081850] via-[#081850] to-[#2B99B1]">
       <Navbar />
       <Hero />
       <About />
       <Unique />
       <Building />
-      <Illustration />
+      {/* <Illustration /> */}
       <Income />
       <Video />
       <Subscribe />

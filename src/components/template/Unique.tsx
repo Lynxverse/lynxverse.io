@@ -4,7 +4,7 @@ import { IMAGE } from "utils/images";
 const Unique = () => {
   return (
     <Section size={false}>
-      <h1 className="text-center font-title text-title text-white">
+      <h1 className="text-center font-title text-[1.8rem] text-white md:text-title">
         Why We are Unique?
       </h1>
       <div className="mt-36">

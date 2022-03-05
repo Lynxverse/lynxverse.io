@@ -5,7 +5,7 @@ const Video = () => {
   return (
     <Section size={false}>
       <div className="py-16">
-        <h1 className="py-5 text-center font-title text-title text-white">
+        <h1 className="py-5 text-center font-title text-[1.8rem] text-white md:text-title">
           Demo Video
         </h1>
         <div className="relative aspect-video">

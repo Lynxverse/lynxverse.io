@@ -26,23 +26,23 @@ const IMAGE = {
 const SwiperImage = [
     {
         title: 'Swiper Image 2',
+        desc: '(marketplace in metaverse) to sell and buy nft assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
         image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
     },
     {
         title: 'Swiper Image 2',
+        desc: '(marketplace in metaverse) to sell and buy nft assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
         image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
     },
     {
         title: 'Swiper Image 2',
+        desc: '(marketplace in metaverse) to sell and buy nft assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
         image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
     },
     {
         title: 'Swiper Image 2',
+        desc: '(marketplace in metaverse) to sell and buy nft assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
         image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
     },
-    {
-        title: 'Swiper Image 2',
-        image: 'https://images.unsplash.com/photo-1640622300930-6e8daa98536f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
-    }
 ]
 export { IMAGE, SwiperImage }
