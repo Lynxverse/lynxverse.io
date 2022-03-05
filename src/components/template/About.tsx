@@ -1,6 +1,14 @@
 import { Section } from "components/layout/Section";
 import { IMAGE } from "utils/images";
+import React from "react";
+import Aos from "aos";
+
 const About = () => {
+  React.useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
   return (
     <div className="relative">
       <img
@@ -10,7 +18,11 @@ const About = () => {
       />
       <Section size={false}>
         <div className="relative flex flex-col-reverse items-center justify-center space-y-10 py-36 md:flex-row md:space-y-0">
-          <div className="space-y-4 md:w-7/12">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            className="space-y-4 md:w-7/12"
+          >
             <h1 className="text-center font-title text-[1.8rem] text-white md:text-left md:text-title">
               What is Lynxverse?
             </h1>
@@ -25,7 +37,14 @@ const About = () => {
               assistant.
             </p>
           </div>
-          <img className="md:w-5/12" src={IMAGE.headset} alt="headset" />
+          <img
+            data-aos="fade-left"
+            data-aos-offset="500"
+            data-aos-duration="2000"
+            className="md:w-5/12"
+            src={IMAGE.headset}
+            alt="headset"
+          />
         </div>
       </Section>
     </div>

@@ -1,8 +1,13 @@
 import React from "react";
 import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
-
+import Aos from "aos";
 const Hero = () => {
+  React.useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
   return (
     <div className="relative top-0 flex w-full justify-center py-36 px-5">
       <img className="absolute" src={IMAGE.grid} alt="logo" />
@@ -13,7 +18,10 @@ const Hero = () => {
         alt="silhoute"
       />
       <div className="relative flex flex-col items-center justify-center">
-        <div className="relative my-5 flex flex-col items-center justify-center">
+        <div
+          data-aos="zoom-in"
+          className="relative my-5 flex flex-col items-center justify-center"
+        >
           <img
             className="absolute w-[100px] md:w-[300px]"
             src={IMAGE.logocircle}
@@ -25,7 +33,11 @@ const Hero = () => {
             alt="ring"
           />
         </div>
-        <div className="text-center">
+        <div
+          className="text-center"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
           <h1 className="font-title text-[2rem] text-white md:text-hero">
             LYNXVERSE
           </h1>
@@ -33,7 +45,11 @@ const Hero = () => {
             Dont worry you are not alone, we are here for you
           </p>
         </div>
-        <div className="mt-10 flex max-w-lg flex-col items-center justify-center space-y-10">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          className="mt-10 flex max-w-lg flex-col items-center justify-center space-y-10"
+        >
           <p className="text-center font-description text-[1rem] text-[#D8D8D8] md:text-description">
             we are charity based game, feel free to support us by click donate
             us below, or if you wish to join our whitelist presale, please click

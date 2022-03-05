@@ -1,13 +1,21 @@
 import { Section } from "components/layout/Section";
 import { Card } from "components/template/Card";
 import { IMAGE } from "utils/images";
+import React from "react";
+import Aos from "aos";
+
 const Unique = () => {
+  React.useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
   return (
     <Section size={false}>
-      <h1 className="text-center font-title text-[1.8rem] text-white md:text-title">
+      <h1 className="text-center font-title text-[1.6rem] text-white md:text-title">
         Why We are Unique?
       </h1>
-      <div className="mt-36">
+      <div className="mt-36" data-aos="fade-up" data-aos-duration="2000">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
           <Card
             image={IMAGE.assets01}
@@ -26,7 +34,11 @@ const Unique = () => {
             description="marketplace: Users can create NFT assets (music for meditation, yoga lessons, and more) to assist user’s therapy. All assets can be purchased using $lynx token."
           />
         </div>
-        <div className="mx-auto grid grid-cols-1 gap-5 py-40 md:w-10/12 md:grid-cols-3">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          className="mx-auto grid grid-cols-1 gap-5 py-20 md:w-10/12 md:grid-cols-3"
+        >
           <Card
             image={IMAGE.assets05}
             description="Security: Using the blockchain, users can overcome any stigma associated with mental health issues that may make them feel ashamed or as an outcast if they need to work directly with other people."
