@@ -1,20 +1,10 @@
 import React from "react";
 import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
-import AOS from "aos";
 
 const Hero = () => {
-  React.useEffect(() => {
-    AOS.init({
-      duration: 2000,
-    });
-  });
   return (
-    <div
-      data-aos="fade-up"
-      data-aos-duration="2000"
-      className="relative top-0 flex w-full justify-center py-36 px-5"
-    >
+    <div className="relative top-0 flex w-full justify-center py-36 px-5">
       <img className="absolute" src={IMAGE.grid} alt="logo" />
       <img className="absolute" src={IMAGE.stars} alt="logo" />
       <img
