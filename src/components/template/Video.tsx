@@ -10,7 +10,11 @@ const Video = () => {
         </h1>
         <div className="relative aspect-video">
           <img className="w-full" src={IMAGE.frame} alt="frame" />
-          <video controls muted className="absolute top-0 rounded-xl p-10">
+          <video
+            controls
+            muted
+            className="absolute top-0 h-full w-full rounded-xl p-3 md:p-10"
+          >
             <source
               src="http://lynxverse.octagram.id/video/demo.mp4"
               type="video/mp4"
