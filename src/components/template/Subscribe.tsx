@@ -5,11 +5,11 @@ const Subscribe = () => {
     <Section size={false}>
       <div className="h-100 py-10 md:px-0 lg:px-0">
         <div className="x-10 mx-auto h-full">
-          <div className="flex h-full flex-col items-center justify-center space-y-8">
-            <h2 className="mx-auto w-full text-left font-title text-[1.8rem] text-4xl font-extrabold leading-none text-white sm:text-5xl md:text-title md:text-5xl">
+          <div className="flex h-full flex-col items-center justify-center space-y-4 md:space-y-8">
+            <h2 className="mx-auto w-full text-center font-title text-[1.8rem] font-extrabold leading-none text-white sm:text-5xl md:text-left md:text-title md:text-5xl">
               Get Updated News
             </h2>
-            <p className="mx-auto w-full text-left font-mono text-xl text-gray-300 md:text-2xl">
+            <p className="mx-auto w-full text-center font-mono text-xl text-gray-300 md:text-left md:text-2xl">
               Want to know more about Lynxverse?
             </p>
             <div className="mx-auto flex w-full flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-5">

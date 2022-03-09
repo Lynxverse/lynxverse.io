@@ -1,70 +1,64 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from "react";
 import { IMAGE, SwiperImage } from "utils/images";
-import { Pagination, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import { Pagination } from "swiper";
 import { useWindows } from "hook/useWindows";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Illustration = () => {
+  const [idx, setIdx] = React.useState<number>(0);
   const [width] = useWindows();
   return (
-    <div className="relative mx-auto my-24 flex h-[600px] w-full items-center bg-gradient-to-r from-[#10557C]/30 to-[#1B315B]/30 md:px-10">
+    <div className="mx-auto py-16">
       <Swiper
-        slidesPerView={width <= 900 ? 1 : 3}
-        centeredSlides={true}
-        spaceBetween={80}
+        slidesPerView={width <= 1000 ? 1 : 3}
         loop={true}
+        centeredSlides={true}
+        cssMode={true}
+        navigation={true}
         pagination={{
           clickable: true,
         }}
-        navigation={true}
         modules={[Pagination, Navigation]}
-        className="h-[300px] overflow-visible"
+        onSlideChange={(swiper) => {
+          setIdx(swiper.realIndex);
+        }}
+        className="bg-gradient-to-r from-[#10557C]/20 to-[#1B315B]/20 md:h-[550px]"
       >
         {SwiperImage.map((items, index) => {
           return (
-            <>
-              <SwiperSlide key={index}>
-                {({ isActive }) => (
-                  <>
-                    <div
-                      className={
-                        isActive
-                          ? "transition-all md:h-[350px] md:scale-150"
-                          : "mt-14 h-[250px] w-full"
-                      }
-                    >
-                      <div className="relative">
-                        {/* <img
-                      className="absolute h-full w-full object-cover p-5"
-                      src={items.image}
-                      alt={items.title}
-                    /> */}
-                        <img src={IMAGE.frame} alt={items.title} />
-                        {/* <div
-                          hidden={!isActive}
-                          className="absolute -bottom-20 space-y-5 py-10 text-center"
-                        >
-                          <h1 className="font-title text-xl text-white">
-                            {items.title}
-                          </h1>
-                          <p className="font-description text-white">
-                            {items.desc}
-                          </p>
-                        </div> */}
-                      </div>
-                    </div>
-                  </>
-                )}
-              </SwiperSlide>
-            </>
+            <SwiperSlide
+              className="flex items-center justify-start px-14"
+              key={index}
+            >
+              {({ isActive }) => (
+                <img
+                  className={
+                    isActive
+                      ? "z-10 w-full rounded-xl bg-[#10557C] transition-transform md:scale-100 lg:scale-150"
+                      : "z-0 w-full scale-100 rounded-xl bg-[#10557C]"
+                  }
+                  src={items.image}
+                  alt={items.title}
+                />
+              )}
+            </SwiperSlide>
           );
         })}
       </Swiper>
+      <div className="mx-auto h-[300px] max-w-xl space-y-3 py-16">
+        <h1 className="text-center font-title text-[1.8rem] text-white">
+          {SwiperImage[idx].title}
+        </h1>
+        <p className="text-center font-description text-description leading-relaxed text-white">
+          {SwiperImage[idx].desc}
+        </p>
+      </div>
     </div>
   );
 };
