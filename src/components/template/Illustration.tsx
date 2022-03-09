@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGE, SwiperImage } from "utils/images";
+import { SwiperImage } from "utils/images";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { Pagination } from "swiper";
