@@ -2,6 +2,7 @@ import React from "react";
 import Aos from "aos";
 import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
+import { URL } from "utils/url";
 const Hero = () => {
   React.useEffect(() => {
     Aos.init({
@@ -57,7 +58,11 @@ const Hero = () => {
           </p>
           <div className="flex space-x-5">
             <Button title="Donate Us" style={`gradient`} />
-            <Button title="Join Whitelist" style={`outline`} />
+            <Button
+              link={URL.whitelist}
+              title="Join Whitelist"
+              style={`outline`}
+            />
           </div>
         </div>
       </div>
