@@ -1,7 +1,7 @@
 import React from "react";
+import Aos from "aos";
 import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
-import Aos from "aos";
 const Hero = () => {
   React.useEffect(() => {
     Aos.init({
@@ -57,7 +57,7 @@ const Hero = () => {
           </p>
           <div className="flex space-x-5">
             <Button title="Donate Us" style={`gradient`} />
-            <Button title="Donate Us" style={`outline`} />
+            <Button title="Join Whitelist" style={`outline`} />
           </div>
         </div>
       </div>
