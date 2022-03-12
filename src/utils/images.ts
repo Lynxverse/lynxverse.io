@@ -27,27 +27,52 @@ const SwiperImage = [
     {
         title: 'Go to universe',
         desc: '(university in metaverse) to study about mental health',
-        image: require('../assets/images/universe.svg').default,
+        image: require('../assets/images/University.svg').default,
+    },
+    {
+        title: 'Go to universe',
+        desc: '(university in metaverse) to study about mental health',
+        image: require('../assets/images/University2.svg').default,
     },
     {
         title: 'Go to sharing center',
         desc: 'The organization where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
-        image: require('../assets/images/sharing.svg').default,
+        image: require('../assets/images/SharingCenter.svg').default,
+    },
+    {
+        title: 'Go to sharing center',
+        desc: 'The organization where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
+        image: require('../assets/images/SharingCenter2.svg').default,
     },
     {
         title: 'Go to marketverse ',
         desc: '(marketplace in metaverse) to sell and buy nft assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
-        image: require('../assets/images/marketplace.svg').default,
+        image: require('../assets/images/Market.svg').default,
+    },
+    {
+        title: 'Go to marketverse ',
+        desc: '(marketplace in metaverse) to sell and buy nft assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
+        image: require('../assets/images/Market2.svg').default,
     },
     {
         title: 'Go to home',
         desc: 'this is your home, you store your assets safely here (game level, nft, yoga, meditation, listening music, etc) ',
-        image: require('../assets/images/home.svg').default,
+        image: require('../assets/images/Home.svg').default,
+    },
+    {
+        title: 'Go to home',
+        desc: 'this is your home, you store your assets safely here (game level, nft, yoga, meditation, listening music, etc) ',
+        image: require('../assets/images/Home2.svg').default,
     },
     {
         title: 'Go to clinicverse',
         desc: ' (clinics in metaverse) for therapy sessions or play our game (solo or multiplayer) with an interactive AI assistant where you can select who or which “form” of the AI you wish to have. The AI can be anime, human, animals, plants, or yourself, whatever you prefer to make you comfortable to talk and share your story with this AI. ',
-        image: require('../assets/images/clinic.svg').default,
+        image: require('../assets/images/Clinicverse.svg').default,
+    },
+    {
+        title: 'Go to clinicverse',
+        desc: ' (clinics in metaverse) for therapy sessions or play our game (solo or multiplayer) with an interactive AI assistant where you can select who or which “form” of the AI you wish to have. The AI can be anime, human, animals, plants, or yourself, whatever you prefer to make you comfortable to talk and share your story with this AI. ',
+        image: require('../assets/images/Clinicverse2.svg').default,
     },
 ]
 export { IMAGE, SwiperImage }

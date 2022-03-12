@@ -23,7 +23,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="flex flex-col items-center justify-between space-y-10 md:flex-row md:space-y-0">
-            <p className="font-description text-white">
+            <p className="text-center font-description text-white md:text-left">
               © 2022 Lynxverse . All rights reserved.
             </p>
             <FaTwitter size={30} color="white" />

@@ -40,8 +40,8 @@ const Illustration = () => {
                 <img
                   className={
                     isActive
-                      ? "z-10 w-full rounded-xl bg-[#10557C] transition-transform md:scale-100 lg:scale-150"
-                      : "z-0 w-full scale-100 rounded-xl bg-[#10557C]"
+                      ? "z-10 w-full rounded-xl transition-transform md:scale-100 lg:scale-150"
+                      : "z-0 w-full scale-100 rounded-xl "
                   }
                   src={items.image}
                   alt={items.title}
