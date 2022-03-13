@@ -26,7 +26,9 @@ const Footer = () => {
             <p className="text-center font-description text-white md:text-left">
               © 2022 Lynxverse . All rights reserved.
             </p>
-            <FaTwitter size={30} color="white" />
+            <a href="https://twitter.com/play_lynxverse">
+              <FaTwitter size={30} color="white" />
+            </a>
           </div>
         </footer>
       </Section>
