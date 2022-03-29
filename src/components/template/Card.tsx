@@ -7,7 +7,7 @@ const Card = (props: ICard) => {
         src={props.image}
         alt="assets"
       />
-      <p className="text-center font-description text-card text-white">
+      <p className="text-center font-description text-[13px] text-white md:text-card">
         {props.description}
       </p>
     </div>

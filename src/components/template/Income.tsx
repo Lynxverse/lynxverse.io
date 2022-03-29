@@ -27,10 +27,10 @@ const Income = () => {
               data-aos-duration="2000"
               className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/3"
             >
-              <h1 className="font-title text-[0.9rem] text-[#69E5D0] md:text-[22px]">
+              <h1 className="font-title text-[0.7rem] text-[#69E5D0] md:text-[22px]">
                 Share to earn
               </h1>
-              <p className="font-title text-[0.9rem] text-white md:text-[22px]">
+              <p className="font-title text-[0.7rem] text-white md:text-[22px]">
                 share your story or friends/fam story of a mental health problem
                 to your virtual friends in the metaverse and earn stable coin.
                 You can generate events (organisation) doing speeches, open
@@ -51,10 +51,10 @@ const Income = () => {
               data-aos-duration="2000"
               className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/3"
             >
-              <h1 className="font-title text-[0.9rem] text-[#69E5D0] md:text-[22px]">
+              <h1 className="font-title text-[0.7rem] text-[#69E5D0] md:text-[22px]">
                 Play to earn
               </h1>
-              <p className="font-title text-[0.9rem] text-white md:text-[22px]">
+              <p className="font-title text-[0.7rem] text-white  md:text-[22px]">
                 This is the main purpose of the Lynx metaverse, to help you.
                 Don't worry you are not alone, we are here to help you as a
                 quiding friend in the journey. Play our scenario and finish.
@@ -76,10 +76,10 @@ const Income = () => {
               data-aos-duration="2000"
               className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/3"
             >
-              <h1 className="font-title text-[0.9rem] text-[#69E5D0] md:text-[22px]">
+              <h1 className="font-title text-[0.7rem] text-[#69E5D0] md:text-[22px]">
                 Learn to earn
               </h1>
-              <p className="font-title text-[0.9rem] text-white md:text-[22px]">
+              <p className="font-title text-[0.7rem] text-white md:text-[22px]">
                 learn about various mental illnesses, complete a quiz. and earn
                 stable coin in our universe (university in metaverse). Users can
                 also earn a degree in our metaverse based on levels and earn
@@ -101,10 +101,10 @@ const Income = () => {
               data-aos-duration="2000"
               className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/3"
             >
-              <h1 className="font-title text-[0.9rem] text-[#69E5D0] md:text-[22px]">
+              <h1 className="font-title text-[0.7rem] text-[#69E5D0] md:text-[22px]">
                 Sell Assets
               </h1>
-              <p className="font-title text-[0.9rem] text-white md:text-[22px]">
+              <p className="font-title text-[0.7rem] text-white md:text-[22px]">
                 Creators can sell assets to our marketplace, and users can trade
                 the assets
               </p>
