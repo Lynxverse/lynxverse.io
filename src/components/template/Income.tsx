@@ -31,8 +31,11 @@ const Income = () => {
                 Share to earn
               </h1>
               <p className="font-title text-[0.9rem] text-white md:text-[22px]">
-                Share your story or friends/fam story of a mental health problem
-                to your virtual friends in the metaverse and earn $lynx token.
+                share your story or friends/fam story of a mental health problem
+                to your virtual friends in the metaverse and earn stable coin.
+                You can generate events (organisation) doing speeches, open
+                discussion, and more. Bring your real world friends to the Lynx
+                metaverse to earn stable coin.
               </p>
             </div>
           </div>
@@ -53,8 +56,11 @@ const Income = () => {
               </h1>
               <p className="font-title text-[0.9rem] text-white md:text-[22px]">
                 This is the main purpose of the Lynx metaverse, to help you.
-                Don’t worry you are not alone, we are here to help you as a
-                guiding friend in the journey.
+                Don't worry you are not alone, we are here to help you as a
+                quiding friend in the journey. Play our scenario and finish.
+                Step by step users will earn stable coin. We help you with your
+                problems and guide you toward solutions that will you reach your
+                full potential.
               </p>
             </div>
           </div>
@@ -74,8 +80,12 @@ const Income = () => {
                 Learn to earn
               </h1>
               <p className="font-title text-[0.9rem] text-white md:text-[22px]">
-                Learn about various mental illnesses, complete a quiz, and earn
-                $lynx in our universe (university in metaverse).
+                learn about various mental illnesses, complete a quiz. and earn
+                stable coin in our universe (university in metaverse). Users can
+                also earn a degree in our metaverse based on levels and earn
+                stable coin This is aimed to increase awareness about mental
+                illnesses and teach people how to be aware to care for
+                themselves and others
               </p>
             </div>
           </div>

@@ -51,7 +51,7 @@ const Illustration = () => {
           );
         })}
       </Swiper>
-      <div className="mx-auto h-[300px] max-w-xl space-y-3 py-16">
+      <div className="mx-auto h-[300px] max-w-2xl space-y-3 py-16">
         <h1 className="text-center font-title text-[1.8rem] text-white">
           {SwiperImage[idx].title}
         </h1>

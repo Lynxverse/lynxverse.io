@@ -31,10 +31,10 @@ const About = () => {
               help mental illness patients and raise awareness. This is the
               first game on the blockchain focused on mental health with
               learn-to-earn, share-to-earn, and play-to-earn where users can
-              earn the native $lynx token. The “earn” is designed to fully
-              utilize Lynxverse. Lynxverse is an ever-changing experience with
-              machine learning to update the gaming scenario and the AI
-              assistant.
+              earn the stable coin UST / USDT / USDC / BUSD. The "earn" is
+              designed to fully utilize Lynxverse. Lynxverse is an ever-changing
+              experience with machine learning to update the gaming scenario and
+              the Al assistant.
             </p>
           </div>
           <img
