@@ -55,7 +55,7 @@ const Illustration = () => {
         <h1 className="text-center font-title text-[1.8rem] text-white">
           {SwiperImage[idx].title}
         </h1>
-        <p className="px-5 text-center font-description text-description leading-relaxed text-white">
+        <p className="px-5  text-justify font-description text-[14px] leading-relaxed text-white md:text-description">
           {SwiperImage[idx].desc}
         </p>
       </div>

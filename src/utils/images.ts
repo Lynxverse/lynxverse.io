@@ -18,6 +18,7 @@ const IMAGE = {
     incomeassets02: require('../assets/images/incomeassets02.svg').default,
     incomeassets03: require('../assets/images/incomeassets03.svg').default,
     incomeassets04: require('../assets/images/incomeassets04.svg').default,
+    incomeassets05: require('../assets/images/incomeassets05.svg').default,
     building: require('../assets/images/building.svg').default,
     frame: require('../assets/images/frame.svg').default,
     stars: require('../assets/images/stars.svg').default,
