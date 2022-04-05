@@ -16,7 +16,7 @@ const Video = () => {
             className="absolute top-0 h-full w-full rounded-xl p-3 md:p-10"
           >
             <source
-              src="http://lynxverse.octagram.id/video/demo.mp4"
+              src="https://res.cloudinary.com/dq2h3thdg/video/upload/v1649161801/demo_qzud0q.mp4"
               type="video/mp4"
             />
           </video>

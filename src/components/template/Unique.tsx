@@ -20,7 +20,7 @@ const Unique = () => {
           <Card
             image={IMAGE.assets01}
             top="-top-28"
-            description="the first game on blockchain specialize for mental illness victim"
+            description="the first game on blockchain specialize for mental health and well-being victim"
           />
           <Card
             image={IMAGE.assets02}
@@ -30,7 +30,7 @@ const Unique = () => {
           <Card
             image={IMAGE.assets03}
             top="-top-28"
-            description="helping people, not for the patient only but also if your friends/family have problem with mental illness, you can study what
+            description="helping people, not for the patient only but also if your friends/family have problem with mental health and well-being, you can study what
             best to help them"
           />
           <Card

@@ -80,12 +80,12 @@ const Income = () => {
                 Learn to earn
               </h1>
               <p className="px-3 font-title text-[0.7rem] text-white md:text-[22px]">
-                learn about various mental illnesses, complete a quiz. and earn
-                stable coin in our universe (university in metaverse). Users can
-                also earn a degree in our metaverse based on levels and earn
-                stable coin This is aimed to increase awareness about mental
-                illnesses and teach people how to be aware to care for
-                themselves and others
+                learn about various mental health and well-being, complete a
+                quiz. and earn stable coin in our universe (university in
+                metaverse). Users can also earn a degree in our metaverse based
+                on levels and earn stable coin This is aimed to increase
+                awareness about mental health and well-being and teach people
+                how to be aware to care for themselves and others
               </p>
             </div>
           </div>
