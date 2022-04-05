@@ -3,7 +3,6 @@ import { Hero } from "components/template/Hero";
 import { About } from "components/template/About";
 import { Unique } from "components/template/Unique";
 import { Building } from "components/template/Building";
-import { Video } from "components/template/Video";
 import { Subscribe } from "components/template/Subscribe";
 import { Footer } from "components/template/Footer";
 import { Income } from "components/template/Income";
@@ -18,7 +17,6 @@ const LandingPage = () => {
       <Building />
       <Illustration />
       <Income />
-      <Video />
       <Subscribe />
       <Footer />
     </div>
