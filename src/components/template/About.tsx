@@ -27,14 +27,15 @@ const About = () => {
               What is Lynxverse?
             </h1>
             <p className="text-justify font-description text-[1rem] leading-relaxed text-[#D8D8D8] md:text-description">
-              A multichain gamification metaverse using CBT implemented on VR to
-              help mental health and well-being patients and raise awareness.
-              This is the first game on the blockchain focused on mental health
-              with learn-to-earn, share-to-earn, and play-to-earn where users
-              can earn the stable coin UST / USDT / USDC / BUSD. The "earn" is
+              A multichain gamification metaverse using Cognitive Behavioral
+              Therapy (CBT) implemented on Virtual Reality to help and raise
+              awareness of mental health and well-being. This is the first game
+              on the blockchain focused on mental health and well being with
+              learn-to-earn, share-to-earn, and play-to-earn where users can
+              earn the stable coin UST / USDT / USDC / BUSD. The “earn” is
               designed to fully utilize Lynxverse. Lynxverse is an ever-changing
               experience with machine learning to update the gaming scenario and
-              the Al assistant.
+              the AI assistant.
             </p>
           </div>
           <img
