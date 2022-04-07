@@ -57,12 +57,12 @@ const SwiperImage = [
     },
     {
         title: 'Go to home',
-        desc: 'home: this is your home, you store your assets safely here (game level, nft, yoga, meditation, listening music,etc)',
+        desc: 'home: this is your home, you store your assets safely here (game level, NFT, yoga, meditation, listening music,etc)',
         image: require('../assets/images/Home.svg').default,
     },
     {
         title: 'Go to home',
-        desc: 'home: this is your home, you store your assets safely here (game level, nft, yoga, meditation, listening music,etc)',
+        desc: 'home: this is your home, you store your assets safely here (game level, NFT, yoga, meditation, listening music,etc)',
         image: require('../assets/images/Home2.svg').default,
     },
     {
