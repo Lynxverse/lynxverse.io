@@ -31,11 +31,13 @@ const Income = () => {
                 Share to earn
               </h1>
               <p className="px-3 font-title text-[0.7rem] text-white md:text-[22px]">
-                share your story or friends/fam story of a mental health problem
-                to your virtual friends in the metaverse and earn stable coin.
-                You can generate events (organisation) doing speeches, open
-                discussion, and more. Bring your real world friends to the Lynx
-                metaverse to earn stable coin.
+              Users
+              are encouraged to
+              share their mental health
+              endeavors and to talk more
+              about the issues they face
+              Upon doing so, the platform
+              rewards them with stable coin (i.e UST)
               </p>
             </div>
           </div>
@@ -55,12 +57,12 @@ const Income = () => {
                 Play to earn
               </h1>
               <p className="px-3 font-title text-[0.7rem]  text-white md:text-[22px]">
-                This is the main purpose of the Lynx metaverse, to help you.
-                Don't worry you are not alone, we are here to help you as a
-                quiding friend in the journey. Play our scenario and finish.
-                Step by step users will earn stable coin. We help you with your
-                problems and guide you toward solutions that will you reach your
-                full potential.
+              Users
+              are rewarded in stable
+              coin such as UST for their activity on the
+              gamified CBT scenarios
+              awarding them for their time
+              spent
               </p>
             </div>
           </div>
@@ -80,12 +82,14 @@ const Income = () => {
                 Learn to earn
               </h1>
               <p className="px-3 font-title text-[0.7rem] text-white md:text-[22px]">
-                learn about various mental health and well-being, complete a
-                quiz. and earn stable coin in our universe (university in
-                metaverse). Users can also earn a degree in our metaverse based
-                on levels and earn stable coin This is aimed to increase
-                awareness about mental health and well-being and teach people
-                how to be aware to care for themselves and others
+              Users
+              can also explore various
+              scenarios that spread
+              awareness of mental health
+              issues and teaches more about
+              the illnesses Users who
+              participate are rewarded
+              stable coin UST
               </p>
             </div>
           </div>
@@ -105,8 +109,8 @@ const Income = () => {
                 Sell Assets
               </h1>
               <p className="px-3 font-title text-[0.7rem] text-white md:text-[22px]">
-                Creators can sell assets to our marketplace, and users can trade
-                the assets
+                Creators can sell assets to our marketplace around mental health topics, and users can trade
+                the assets and uses them to enrich their journey
               </p>
             </div>
           </div>
@@ -123,10 +127,10 @@ const Income = () => {
               className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/3"
             >
               <h1 className="font-title text-[0.7rem] text-[#69E5D0] md:text-[22px]">
-                psychology
+                Real-World Bridging
               </h1>
               <p className="px-3 font-title text-[0.7rem] text-white md:text-[22px]">
-                psychology or real world clinics / hospital can team up with
+                Practitioner or real world clinics / hospital can team up with
                 Lynxverse, rent office in our metaverse world to get more
                 clients and clients who needs more help, Lynxverse can connect
                 them with the real psychology in the metaverse all payment done
