@@ -24,60 +24,60 @@ const IMAGE = {
     stars: require('../assets/images/stars.svg').default,
 }
 
-const SwiperImage = [
+const  SwiperImage = [
     {
         title: 'Go to universe',
-        desc: 'go to universe (university in metaverse) to study about mental health',
+        desc: 'Go to universe (university in metaverse) to study about mental health',
         image: require('../assets/images/University.svg').default,
     },
     {
         title: 'Go to universe',
-        desc: 'go to universe (university in metaverse) to study about mental health',
+        desc: 'Go to universe (university in metaverse) to study about mental health',
         image: require('../assets/images/University2.svg').default,
     },
     {
         title: 'Go to sharing center',
-        desc: 'go to sharing center : The organization where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
+        desc: 'Go to sharing center : The center where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
         image: require('../assets/images/SharingCenter.svg').default,
     },
     {
         title: 'Go to sharing center',
-        desc: 'go to sharing center : The organization where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
+        desc: 'Go to sharing center : The center where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
         image: require('../assets/images/SharingCenter2.svg').default,
     },
     {
         title: 'Go to marketverse ',
-        desc: 'go to marketverse (marketplace in metaverse) to sell and buy ft assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
+        desc: 'Go to marketverse (marketplace in metaverse) to sell and buy assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
         image: require('../assets/images/Market.svg').default,
     },
     {
         title: 'Go to marketverse ',
-        desc: 'go to marketverse (marketplace in metaverse) to sell and buy ft assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
+        desc: 'Go to marketverse (marketplace in metaverse) to sell and buy assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
         image: require('../assets/images/Market2.svg').default,
     },
     {
         title: 'Go to home',
-        desc: 'home: this is your home, you store your assets safely here (game level, NFT, yoga, meditation, listening music,etc)',
+        desc: 'Home: this is your home, you store your assets safely here (game level, NFT, yoga, meditation, listening music,etc)',
         image: require('../assets/images/Home.svg').default,
     },
     {
         title: 'Go to home',
-        desc: 'home: this is your home, you store your assets safely here (game level, NFT, yoga, meditation, listening music,etc)',
+        desc: 'Home: this is your home, you store your assets safely here (game level, NFT, yoga, meditation, listening music,etc)',
         image: require('../assets/images/Home2.svg').default,
     },
     {
         title: 'Go to clinicverse',
-        desc: 'go to clinicsverse (clinics in metaverse) for therapy sessions or play our game (solo or multiplayer) with an interactive Al assistant where you can select who or which "form" of the Al you wish to have. The Al can be anime. human, animals, plants, or yourself. whatever you prefer to make you comfortable to talk and share your story with this Al.',
+        desc: 'Go to clinicsverse (clinics in metaverse) for therapy sessions or play our game (solo or multiplayer) with an interactive Al assistant where you can select who or which "form" of the Al you wish to have. The Al can be anime. human, animals, plants, or yourself. whatever you prefer to make you comfortable to talk and share your story with this Al.',
         image: require('../assets/images/Clinicverse.svg').default,
     },
     {
         title: 'Go to clinicverse',
-        desc: 'go to clinicsverse (clinics in metaverse) for therapy sessions or play our game (solo or multiplayer) with an interactive Al assistant where you can select who or which "form" of the Al you wish to have. The Al can be anime. human, animals, plants, or yourself. whatever you prefer to make you comfortable to talk and share your story with this Al.',
+        desc: 'Go to clinicsverse (clinics in metaverse) for therapy sessions or play our game (solo or multiplayer) with an interactive Al assistant where you can select who or which "form" of the Al you wish to have. The Al can be anime. human, animals, plants, or yourself. whatever you prefer to make you comfortable to talk and share your story with this Al.',
         image: require('../assets/images/Clinicverse2.svg').default,
     },
     {
         title: 'Empty Building',
-        desc: 'Empty building or map: for those psychology who wants to connect with real psychology in metaverse world. Those psychology can rent office or a clinics can rent office in the metaverse world to connect with the clients! The rent using stable coin for the payment yet also using stable coin too for those patient or clients who wants to have a real session therapy with psychology in the metaverse',
+        desc: 'Empty building or map: for those real world practitioners and organization who wants to connect with real psychology in metaverse world. Those psychology can rent office or a clinics can rent office in the metaverse world to connect with the clients! The rent using stable coin for the payment yet also using stable coin too for those patient or clients who wants to have a real session therapy with psychology in the metaverse',
         image: require('../assets/images/Clinicverse2.svg').default,
     },
 ]

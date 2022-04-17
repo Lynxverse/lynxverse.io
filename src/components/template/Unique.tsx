@@ -20,22 +20,29 @@ const Unique = () => {
           <Card
             image={IMAGE.assets01}
             top="-top-28"
-            description="The first game on blockchain specialize for mental health and well-being"
+            description="The first gamification on blockchain that focuses on mental health and well-being with expert ties to make it a reality"
           />
           <Card
             image={IMAGE.assets02}
             top="-top-28"
-            description="Free to play, play to earn where user can earn stable coin instead of native token which will be more stabilize"
+            description="free to
+            play and users may visit our physical
+            centers to get the full equipment
+            experience at no real cost!"
           />
           <Card
             image={IMAGE.assets03}
             top="-top-28"
-            description="helping people, not for the patient only but also if your friends/family have problem with mental health, you can study what best to help them"
+            description="Help combat mental health illnesses by
+            using machine learning data structures
+            and AI assistants made to adapt to each users"
           />
           <Card
             image={IMAGE.assets04}
             top="-top-28"
-            description="marketplace: Users can create NFT assets (music for meditation, yoga lessons, and more) to assist user’s therapy. All assets can be purchased using stable coin (UST, USDT, USDC etc)."
+            description="Ecosystem geared to fosters an unique economic
+            market where users can create and trade assets to help
+            health exercises, that in turn enriches user experience."
           />
         </div>
         <div
@@ -46,20 +53,24 @@ const Unique = () => {
           <Card
             image={IMAGE.assets05}
             top="-top-28"
-            description="security: Using the blockchain, users can overcome any stigma associated with mental health issues that may make them feel ashamed or as an outcast if they need to work directly with other people."
+            description="Security: Using the blockchain anonymity, users can overcome any stigma associated with mental health issues that may make them feel ashamed or as an outcast if they need to work directly with other people."
           />
           <Card
             image={IMAGE.assets06}
             top="-top-28"
-            description="Machine learning generated scenarios based on set parameters and constraint made by professionals in the field and AI assistants in different forms (human, animal, plans, etc). The game implements CBT (cognitive behavioral therapy) data taken from previous patients, current, and future users to generate the learning machine and make decisions best for the user along with supervision from researchers and medical professionals. "
+            description="Machine learning generated scenarios based on set 
+            parameters and constraint made by professionals in the field and AI assistants. 
+            Which is used to implement tailored best-fit CBT Scenarios for each user needs "
           />
           <Card
             image={IMAGE.assets07}
             top="-top-20 md:-top-28"
-            description="Earn by helping each other: 
+            description="Earn by helping each other and being active: 
             share to earn,
             learn to earn,
-            play to earn."
+            play to earn.
+            
+            Creating for others thru digital media marketplace and metaverse centers"
           />
         </div>
       </div>

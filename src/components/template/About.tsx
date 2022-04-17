@@ -1,5 +1,7 @@
 import { Section } from "components/layout/Section";
 import { IMAGE } from "utils/images";
+import { Button } from "components/template/Button";
+import { URL } from "utils/url";
 import React from "react";
 import Aos from "aos";
 
@@ -27,16 +29,24 @@ const About = () => {
               What is Lynxverse?
             </h1>
             <p className="text-justify font-description text-[1rem] leading-relaxed text-[#D8D8D8] md:text-description">
-              A multichain gamification metaverse using Cognitive Behavioral
-              Therapy (CBT) implemented on Virtual Reality to help and raise
-              awareness of mental health and well-being. This is the first game
-              on the blockchain focused on mental health and well being with
-              learn-to-earn, share-to-earn, and play-to-earn where users can
-              earn the stable coin UST / USDT / USDC / BUSD. The “earn” is
-              designed to fully utilize Lynxverse. Lynxverse is an ever-changing
-              experience with machine learning to update the gaming scenario and
-              the AI assistant.
+            The world is constantly changing, and the age of globalization and
+            economic inclusion has brought with it, higher rates of mental
+            distress among different generations and cultures. These mental
+            health issues are often overlooked due to many factors in the space.
+            <br/>
+            Lynxverse comes as a solutuion, offering Cognitive Behavioral Therapy (CBT) services 
+            implemented on Virtual Reality to help and raise awareness of mental health and well-being.
+            One of the first on the blockchain focused on such matters with 
+            X to Earn system where users can earn the stable coin such as UST. The “earn” is designed to fully utilize Lynxverse.
             </p>
+            <div className="flex space-x-5">
+            <Button 
+              link={URL.litepaper} 
+              title="Download Lynxverse Litepaper" 
+              style={`gradient`}
+            />
+          </div>
+          
           </div>
           <img
             data-aos="fade-left"

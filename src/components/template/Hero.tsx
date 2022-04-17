@@ -43,7 +43,7 @@ const Hero = () => {
             LYNXVERSE
           </h1>
           <p className="font-description text-[1.5rem] text-white md:text-subtitle">
-            Dont worry you are not alone, we are here for you
+          You never have to be alone when you’re with lynxverse
           </p>
         </div>
         <div
@@ -52,7 +52,7 @@ const Hero = () => {
           className="mt-10 flex max-w-lg flex-col items-center justify-center space-y-10"
         >
           <p className="text-center font-description text-[1rem] text-[#D8D8D8] md:text-description">
-            we are charity based game, feel free to support us by click donate
+            We are a gamification service with a focus on charitable activities, feel free to support us by click donate
             us below, or if you wish to join our whitelist presale, please click
             join presale.
           </p>
