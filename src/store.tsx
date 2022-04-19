@@ -17,6 +17,7 @@ export interface AppContextInterface {
   wallet: ConnectedWallet | undefined,
   uusdBalance: number,
   ulunaBalance: number,
+  
 }
 
 const initialState: AppContextInterface = {

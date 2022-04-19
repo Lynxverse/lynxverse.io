@@ -5,7 +5,8 @@ import "aos/dist/aos.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StoreProvider } from './store'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastProvider, useToasts } from 'react-toast-notifications';
+
 import {
   NetworkInfo,
   WalletProvider,
@@ -18,8 +19,9 @@ ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>
       <WalletProvider {...chainOptions}>
-        <App />
-        <ToastContainer/>
+        <ToastProvider>
+          <App />
+        </ToastProvider>
       </WalletProvider>
     </StoreProvider>
   </React.StrictMode>,

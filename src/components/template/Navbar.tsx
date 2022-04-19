@@ -2,13 +2,16 @@ import React, {useMemo, useEffect, useState} from 'react'
 import { ImAndroid } from "react-icons/im";
 import { LCDClient, Coins } from '@terra-money/terra.js';
 import { useWallet, useConnectedWallet } from '@terra-money/wallet-provider'
+import { BigNumber, ethers } from "ethers";
+
 
 import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
 import { URL } from "utils/url";
 import { useStore, ActionKind } from 'store';
-import { toast } from 'react-toastify';
-import {MdOutlineAccountBalanceWallet, MdArrowCircleDown} from 'react-icons/md'
+import {MdOutlineAccountBalanceWallet, MdArrowCircleDown} from 'react-icons/md';
+
+declare var window: any;
 
 export function shortenAddress(address: string | undefined) {
   if (address) {
@@ -22,6 +25,8 @@ export function shortenAddress(address: string | undefined) {
 const Navbar = () => {
   const {state, dispatch} = useStore();
   const [bank, setBank] = useState(false);
+  const [bankMetamask, setBankMetamask] = useState(false);
+  const [addressMetamask, setAddressMetamask] = useState('');
 
   let wallet = useWallet()
   let connectedWallet = useConnectedWallet()
@@ -59,7 +64,6 @@ const Navbar = () => {
             dispatch({type: ActionKind.setUlunaBalance, payload: coins.get('uluna')?.amount.toNumber()});
           }
         } catch (e) {
-          toast("Can't fetch Wallet balance");
           return;
         }
       }
@@ -81,6 +85,30 @@ const Navbar = () => {
     }
   }
 
+  async function connectToMetamask(){
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const accounts = await provider.send("eth_requestAccounts", []);
+    const account = accounts[0];
+
+    window.ethereum.request({
+      method: "wallet_addEthereumChain",
+      params: [{
+          chainId: "0x61",
+          rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+          chainName: "BSC Testnet",
+          nativeCurrency: {
+              name: "BNB",
+              symbol: "BNB",
+              decimals: 8
+          },
+          blockExplorerUrls: ["https://testnet.bscscan.com"]
+      }]
+    });
+    setAddressMetamask(account);
+    
+    let balance = await provider.getBalance(account);
+    setBankMetamask(true);
+  }
   return (
     <div className="fixed z-20 w-full bg-black/70 backdrop-blur-md">
       <div className="mx-auto flex w-11/12 justify-between py-5">
@@ -92,29 +120,51 @@ const Navbar = () => {
           title="Play Demo"
           style={`primary`}
         />
-        {!state.connected && 
-          <div
-            className="flex bg-white rounded-full justify-center items-center cursor-pointer w-48 h-16"
-            onClick = {() => {connectTo('extension')}}
-          >
-            Terra Station
-          </div>
-        }
-        {state.connected && 
-          <div
-            className="flex bg-white rounded-full justify-center items-center cursor-pointer w-48 h-16"
-          >
-            {(bank && !state.loading) &&
+        <>
+          {!state.connected && 
+            <div
+              className="flex bg-white rounded-full justify-center items-center cursor-pointer w-48 h-16"
+              onClick = {() => {connectTo('extension')}}
+            >
+              Terra Station
+            </div>
+          }
+          {state.connected && 
+            <div
+              className="flex bg-white rounded-full justify-center items-center cursor-pointer w-48 h-16"
+            >
+              {(bank && !state.loading) &&
+                <MdOutlineAccountBalanceWallet size={25} color={'#F9D85E'}/>
+              }
+              {(!bank || state.loading) && 
+                <MdArrowCircleDown size={25} color={'#F9D85E'}/>
+              }
+              <span className="ml-2">
+                {shortenAddress(connectedWallet?.walletAddress.toString())}
+              </span>
+            </div>
+          }
+        </>
+        <>
+          {!bankMetamask &&
+            <div
+              className="flex bg-white rounded-full justify-center items-center cursor-pointer w-48 h-16"
+              onClick = {() => {connectToMetamask()}}
+            >
+              Metamask
+            </div>
+          }
+          {bankMetamask &&
+            <div
+              className="flex bg-white rounded-full justify-center items-center cursor-pointer w-48 h-16"
+            >
               <MdOutlineAccountBalanceWallet size={25} color={'#F9D85E'}/>
-            }
-            {(!bank || state.loading) && 
-              <MdArrowCircleDown size={25} color={'#F9D85E'}/>
-            }
-            <span className="ml-2">
-              {shortenAddress(connectedWallet?.walletAddress.toString())}
-            </span>
-          </div>
-        }
+              <span className="ml-2">
+                {shortenAddress(addressMetamask.toString())}
+              </span>
+            </div>
+          }
+        </>
       </div>
     </div>
   );
