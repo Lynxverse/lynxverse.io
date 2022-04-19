@@ -4,8 +4,8 @@ import "./css/tailwind.css";
 import "aos/dist/aos.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
-
+import { StoreProvider } from './store'
+import { ToastContainer, toast } from 'react-toastify';
 import {
   NetworkInfo,
   WalletProvider,
@@ -16,9 +16,12 @@ import {
 getChainOptions().then((chainOptions) => {
 ReactDOM.render(
   <React.StrictMode>
-    <WalletProvider {...chainOptions}>
-    <App />
-    </WalletProvider>
+    <StoreProvider>
+      <WalletProvider {...chainOptions}>
+        <App />
+        <ToastContainer/>
+      </WalletProvider>
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
