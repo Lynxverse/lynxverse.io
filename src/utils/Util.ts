@@ -5,27 +5,8 @@ import { AddToast } from 'react-toast-notifications';
 
 import { AppContextInterface, ActionKind } from '../store'
 
-export const successOption: any = {
-  position: "top-right",
-  type: "success",
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-};
-
-export const errorOption: any = {
-position: "top-right",
-type: "error",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-};
+export const successOption: any = {appearance: 'success'};
+export const errorOption: any = { appearance: 'error' };
 
 export function shortenAddress(address: string | undefined) {
   if (address) {
@@ -60,7 +41,7 @@ export async function estimateSend(
       accountInfo = e;
     })
     .catch((e) => {
-      addToast(e.message, { appearance: 'error' });
+      addToast(e.message, errorOption);
       console.log(e.message);
     })
 
@@ -89,7 +70,7 @@ export async function estimateSend(
       rawFee = e;
     })
     .catch((e) => {
-      addToast(e.message, { appearance: 'error' });
+      addToast(e.message, errorOption);
       console.log(e.message);
     })
 
@@ -106,42 +87,42 @@ export async function estimateSend(
     })
     .then(async (e) => {
       if (e.success) {
-        addToast(message, { appearance: 'success' });
+        addToast(message, successOption);
         return e.result.txhash;
       } else {
-        addToast(e.result.raw_log, { appearance: 'error' });
+        addToast(e.result.raw_log, errorOption);
         console.log(e.result.raw_log);
         return undefined;
       }
     })
     .catch((e) => {
-      addToast(e.message, { appearance: 'error' });
+      addToast(e.message, errorOption);
       console.log(e.message);
       return undefined;
     })
 }
 
-// export function checkNetwork(wallet: ConnectedWallet | undefined, state: AppContextInterface) {
-//   //----------verify connection--------------------------------
-//   if (wallet === undefined) {
-//     AddToast("Please connect wallet first!", errorOption);
-//     console.log("Please connect wallet first!");
-//     return false;
-//   }
-//   else {
-//     AddToast.dismiss();
-//   }
+export function checkNetwork(wallet: ConnectedWallet | undefined, state: AppContextInterface, addToast: AddToast) {
+  //----------verify connection--------------------------------
+  if (wallet === undefined) {
+    addToast("Please connect wallet first!", errorOption);
+    console.log("Please connect wallet first!");
+    return false;
+  }
+  else {
+    // addToast.dismiss();
+  }
 
-//   if (state.net == 'mainnet' && wallet.network.name == 'testnet') {
-//     AddToast("Please switch to mainnet!", errorOption);
-//     return false;
-//   }
-//   if (state.net == 'testnet' && wallet.network.name == 'mainnet') {
-//     AddToast("Please switch to Testnet!", errorOption);
-//     return false;
-//   }
-//   return true;
-// }
+  if (state.net == 'mainnet' && wallet.network.name == 'testnet') {
+    addToast("Please switch to mainnet!", errorOption);
+    return false;
+  }
+  if (state.net == 'testnet' && wallet.network.name == 'mainnet') {
+    addToast("Please switch to Testnet!", errorOption);
+    return false;
+  }
+  return true;
+}
 
 export function floorNormalize(amount: number){
   return Math.floor(amount/10**4)/100;

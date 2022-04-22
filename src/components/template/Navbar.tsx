@@ -1,15 +1,16 @@
-import React, {useMemo, useEffect, useState} from 'react'
+import React, { useMemo, useEffect, useState } from 'react'
 import { ImAndroid } from "react-icons/im";
 import { LCDClient, Coins } from '@terra-money/terra.js';
 import { useWallet, useConnectedWallet } from '@terra-money/wallet-provider'
 import { BigNumber, ethers } from "ethers";
 
-
+import menuButton from '../../assets/images/menuButton.svg';
 import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
 import { URL } from "utils/url";
 import { useStore, ActionKind } from 'store';
-import {MdOutlineAccountBalanceWallet, MdArrowCircleDown} from 'react-icons/md';
+import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { MdOutlineAccountBalanceWallet, MdArrowCircleDown } from 'react-icons/md';
 
 declare var window: any;
 
@@ -23,10 +24,12 @@ export function shortenAddress(address: string | undefined) {
 }
 
 const Navbar = () => {
-  const {state, dispatch} = useStore();
+  const { state, dispatch } = useStore();
   const [bank, setBank] = useState(false);
   const [bankMetamask, setBankMetamask] = useState(false);
   const [addressMetamask, setAddressMetamask] = useState('');
+  const [displayMenu, setDisplayMenu] = useState("hidden");
+  const { addToast } = useToasts();
 
   let wallet = useWallet()
   let connectedWallet = useConnectedWallet()
@@ -39,8 +42,8 @@ const Navbar = () => {
     }
     dispatch({ type: ActionKind.setConnected, payload: true });
     dispatch({ type: ActionKind.setWallet, payload: connectedWallet });
-    
-    let lcd =  new LCDClient({
+
+    let lcd = new LCDClient({
       URL: connectedWallet.network.lcd,
       chainID: connectedWallet.network.chainID,
     })
@@ -58,10 +61,10 @@ const Navbar = () => {
           setBank(true);
 
           if (coins.get('uusd')) {
-            dispatch({type: ActionKind.setUusdBalance, payload: coins.get('uusd')?.amount.toNumber()});
+            dispatch({ type: ActionKind.setUusdBalance, payload: coins.get('uusd')?.amount.toNumber() });
           }
           if (coins.get('uluna')) {
-            dispatch({type: ActionKind.setUlunaBalance, payload: coins.get('uluna')?.amount.toNumber()});
+            dispatch({ type: ActionKind.setUlunaBalance, payload: coins.get('uluna')?.amount.toNumber() });
           }
         } catch (e) {
           return;
@@ -85,42 +88,119 @@ const Navbar = () => {
     }
   }
 
-  async function connectToMetamask(){
+  useEffect(()=>{
+    window.ethereum?.on('chainChanged', async (chainId: string) => {
+      if(chainId == '0x61'){
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const accounts = await provider.send("eth_requestAccounts", []);
+        const account = accounts[0];
+
+        let balance = await provider.getBalance(account);
+
+        dispatch({type: ActionKind.setEthBalance, payload: balance});
+        dispatch({type: ActionKind.setMetamaskConnected, payload: true});
+        setBankMetamask(true);
+      }
+      else{
+        addToast("Please switch to BSC testnet");
+      }
+    });
+    if(!window.ethereum){
+      addToast("Please install metamask first");
+    }
+  },[])
+
+  async function connectToMetamask() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const accounts = await provider.send("eth_requestAccounts", []);
     const account = accounts[0];
 
-    window.ethereum.request({
-      method: "wallet_addEthereumChain",
-      params: [{
+    const { chainId } = await provider.getNetwork()
+    if(chainId != 97){
+      window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [{
           chainId: "0x61",
           rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
           chainName: "BSC Testnet",
           nativeCurrency: {
-              name: "BNB",
-              symbol: "BNB",
-              decimals: 18
+            name: "BNB",
+            symbol: "BNB",
+            decimals: 18
           },
           blockExplorerUrls: ["https://testnet.bscscan.com"]
-      }]
-    });
+        }]
+      });
+    }
+    else {
+      let balance = await provider.getBalance(account);
+
+      dispatch({type: ActionKind.setEthBalance, payload: balance});
+      dispatch({type: ActionKind.setMetamaskConnected, payload: true});
+      setBankMetamask(true);
+    }
     setAddressMetamask(account);
-    
-    let balance = await provider.getBalance(account);
-    setBankMetamask(true);
   }
   return (
     <div className="fixed z-20 w-full bg-black/70 backdrop-blur-md">
       <div className="mx-auto flex w-11/12 justify-between py-5">
         <img src={IMAGE.logo} className="w-[150px] md:w-[200px]" alt="logo" />
-        <Button
-          link={URL.demo}
-          icon={true}
-          iconChildren={<ImAndroid />}
-          title="Play Demo"
-          style={`primary`}
-        />
-        <>
+        <div className={"flex flex-row w-[100%] md:w-[30%]"}>
+          <Button
+            link={URL.demo}
+            icon={true}
+            iconChildren={<ImAndroid />}
+            title="Play Demo"
+            style={`primary`}
+          />
+          <div
+            className="relative ml-3 md:ml-10"
+            onMouseEnter={() => setDisplayMenu("block")}
+            onMouseLeave={() => setDisplayMenu('hidden')}
+          >
+            <div className="flex h-full  justify-center align-center">
+              <img src={menuButton} className="w-[40px] md:w-[60px]" />
+            </div>
+            <div
+              className={`absolute ${displayMenu} text-white rounded-lg bg-yellow-900 flex flex-col cursor-pointer right-0`}
+            >
+              <div
+                className="hover:bg-white hover:text-black rounded-lg px-4 py-2 flex items-baseline"
+                onClick={() => connectTo('extension')}
+              >
+                <span className="whitespace-nowrap">Terra Station(Browser)</span>&nbsp;&nbsp;
+                {state.connected &&
+                  <div className="text-[9px]">
+                    {shortenAddress(connectedWallet?.walletAddress)}
+                  </div>
+                }
+              </div>
+              <div
+                className="hover:bg-white hover:text-black rounded-lg px-4 py-2 flex items-baseline"
+                onClick={() => connectTo('mobile')}
+              >
+                <span className="whitespace-nowrap">Terra Station(QR CODE)</span>&nbsp;&nbsp;
+                {state.connected &&
+                  <div className="text-[9px]">
+                    {shortenAddress(connectedWallet?.walletAddress)}
+                  </div>
+                }
+              </div>
+              <div
+                className="hover:bg-white hover:text-black rounded-lg px-4 py-2 flex items-baseline"
+                onClick={() => connectToMetamask()}
+              >
+                <span className="whitespace-nowrap">Metamask</span>&nbsp;&nbsp;
+                {bankMetamask &&
+                  <div className="text-[9px]">
+                    {shortenAddress(addressMetamask)}
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <>
           {!state.connected && 
             <div
               className="flex bg-white rounded-full justify-center items-center cursor-pointer w-48 h-16"
@@ -164,7 +244,7 @@ const Navbar = () => {
               </span>
             </div>
           }
-        </>
+        </> */}
       </div>
     </div>
   );

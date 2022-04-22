@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { ConnectedWallet } from '@terra-money/wallet-provider'
 import { LCDClient } from '@terra-money/terra.js'
-
-export type COINTYPE = 'ust' | 'luna';
+import { BigNumber, ethers } from "ethers";
 
 interface Action {
   type: ActionKind;
@@ -13,17 +12,20 @@ export interface AppContextInterface {
   loading: boolean,
   net: "mainnet" | "testnet",
   connected: Boolean,
+  metamaskConnected: Boolean,
   lcd: LCDClient,
   wallet: ConnectedWallet | undefined,
   uusdBalance: number,
   ulunaBalance: number,
-  
+  ethBalance: number,
+
 }
 
 const initialState: AppContextInterface = {
   loading: false,
   net: "testnet",
   connected: false,
+  metamaskConnected: false,
   lcd: new LCDClient({ //
     URL: 'https://lcd.terra.dev',
     chainID: 'columbus-5',
@@ -32,6 +34,7 @@ const initialState: AppContextInterface = {
   wallet: undefined,
   uusdBalance: 0,
   ulunaBalance: 0,
+  ethBalance: 0,
 }
 
 export enum ActionKind{
@@ -40,9 +43,11 @@ export enum ActionKind{
   setPoolAddr,
   setLcd,
   setConnected,
+  setMetamaskConnected,
   setWallet,
   setUusdBalance,
   setUlunaBalance,
+  setEthBalance
 }
 
 const StoreContext = createContext<{ state: AppContextInterface; dispatch: React.Dispatch<any>; }>
@@ -59,6 +64,8 @@ export const reducer = (state: AppContextInterface,  action: Action ) => {
       return { ...state, net: action.payload}
     case ActionKind.setConnected:
       return { ...state, connected: action.payload }
+    case ActionKind.setMetamaskConnected:
+      return { ...state, metamaskConnected: action.payload }
     case ActionKind.setLcd:
       return { ...state, lcd: action.payload }
     case ActionKind.setWallet:
@@ -67,6 +74,8 @@ export const reducer = (state: AppContextInterface,  action: Action ) => {
       return { ...state, uusdBalance: action.payload }
     case ActionKind.setUlunaBalance:
       return { ...state, ulunaBalance: action.payload }
+    case ActionKind.setEthBalance:
+      return { ...state, ethBalance: action.payload }
     default:
       return state
   }
@@ -110,6 +119,11 @@ export const useNetworkName = () => {
   return state.net;
 }
 
+
+export function floor(amount: number){
+  return Math.floor(amount * 100) /100;
+}
+
 export function floorNormalize(amount: number){
   return Math.floor(amount/10**4)/100;
 }
@@ -124,4 +138,10 @@ export const useLUNABalance = () => {
   const {state, dispatch} = useStore();
   let balance = state.ulunaBalance;
   return floorNormalize(balance);
+}
+
+export const useEthBalance = () => {
+  const {state, dispatch} = useStore();
+  let balance = floor(parseFloat(ethers.utils.formatEther(state.ethBalance)));
+  return balance;
 }
