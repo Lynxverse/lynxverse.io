@@ -1,7 +1,7 @@
 import { IButton } from "types/IButton";
 const Button = (props: IButton) => {
   const renderStyle = () => {
-    const primaryStyle = "bg-[#0084FF] hover:bg-[#125593] py-2 text-white";
+    const primaryStyle = "bg-[#0084FF] hover:bg-[#125593] py-1.5 md:py-2 text-white";
     const outlineStyle = "py-2 border-4 border-[#0084FF] text-[#0084FF]";
     const gradientStyle =
       "text-white bg-gradient-to-b from-[#4CDFFF] to-[#794DF6] hover:from-[#2F94AA] shadow-lg shadow-cyan-500/40";
@@ -25,7 +25,7 @@ const Button = (props: IButton) => {
   return (
     <a
       href={props.link}
-      className={`rounded-full ${renderStyle()} flex cursor-pointer items-center px-4 font-title text-[0.7rem] md:px-10 md:text-lg`}
+      className={`rounded-full ${renderStyle()} flex cursor-pointer items-center px-2 font-title text-[0.7rem] md:px-7 text-sm md:text-base`}
     >
       {renderTitle()}
     </a>

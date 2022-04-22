@@ -53,3 +53,13 @@ html {
 .swiper-button-prev::after {
   display: none;
 }
+
+.litepaper-button {
+  min-height: 50px;
+}
+.demo-button {
+  max-height: 40px;
+}
+.connect-wallet {
+  padding-right: 5px;
+}
