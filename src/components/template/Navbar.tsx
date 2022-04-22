@@ -99,7 +99,7 @@ const Navbar = () => {
           nativeCurrency: {
               name: "BNB",
               symbol: "BNB",
-              decimals: 8
+              decimals: 18
           },
           blockExplorerUrls: ["https://testnet.bscscan.com"]
       }]
