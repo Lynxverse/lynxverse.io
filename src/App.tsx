@@ -1,6 +1,7 @@
 import React from "react";
-import { LandingPage } from "components/pages/LandingPage";
+import LandingPage from "components/pages/LandingPage";
 import { Loader } from "components/layout/Loader";
+import Router from './Router';
 
 function App() {
   const [loading, setLoading] = React.useState(true);
@@ -13,7 +14,8 @@ function App() {
   }, []);
 
   const RenderLanding = () => {
-    return <LandingPage />;
+    // return <LandingPage />;
+    return <Router />
   };
 
   const RenderLoader = () => {

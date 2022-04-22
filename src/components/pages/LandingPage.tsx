@@ -11,7 +11,6 @@ import { Illustration } from "components/template/Illustration";
 const LandingPage = () => {
   return (
     <div className="w-full overflow-hidden bg-gradient-to-b from-[#081850] via-[#081850] to-[#2B99B1]">
-      <Navbar />
       <Hero />
       <About />
       <Unique />
@@ -20,9 +19,8 @@ const LandingPage = () => {
       <Income />
       <Video />
       <Subscribe />
-      <Footer />
     </div>
   );
 };
 
-export { LandingPage };
+export default LandingPage;

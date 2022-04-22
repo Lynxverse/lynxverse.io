@@ -39,7 +39,7 @@ const About = () => {
             One of the first on the blockchain focused on such matters with 
             X to Earn system where users can earn the stable coin such as UST. The “earn” is designed to fully utilize Lynxverse.
             </p>
-            <div className="flex space-x-5">
+            <div className="flex space-x-5 litepaper-button">
             <Button 
               link={URL.litepaper} 
               title="Download Lynxverse Litepaper" 

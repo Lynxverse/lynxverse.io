@@ -1,8 +1,10 @@
 import React from "react";
 import Aos from "aos";
+
 import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
 import { URL } from "utils/url";
+
 const Hero = () => {
   React.useEffect(() => {
     Aos.init({
@@ -43,7 +45,7 @@ const Hero = () => {
             LYNXVERSE
           </h1>
           <p className="font-description text-[1.5rem] text-white md:text-subtitle">
-          You never have to be alone when you’re with lynxverse
+            You never have to be alone when you’re with lynxverse
           </p>
         </div>
         <div
@@ -57,7 +59,7 @@ const Hero = () => {
             join presale.
           </p>
           <div className="flex space-x-5">
-            <Button title="Donate Us" style={`gradient`} />
+            <Button title="Donate Us" style={`gradient`} link={'/donate'} />
             <Button
               link={URL.whitelist}
               title="Join Whitelist"

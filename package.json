@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@terra-money/terra.js": "^3.0.11",
+    "@terra-money/wallet-provider": "^3.8.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -11,24 +13,31 @@
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "aos": "^2.3.4",
+    "buffer": "^6.0.3",
+    "ethers": "^5.6.4",
+    "process": "^0.11.10",
     "react": "^17.0.2",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-id-swiper": "^4.0.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "react-slick": "^0.28.1",
+    "react-toast-notifications": "^2.5.1",
     "react-tsparticles": "^1.41.5",
     "slick-carousel": "^1.8.1",
+    "stream-browserify": "^3.0.0",
     "swiper": "^8.0.7",
     "tsparticles-preset-snow": "^1.41.5",
     "typescript": "^4.5.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [

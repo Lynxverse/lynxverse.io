@@ -18,7 +18,7 @@ const Footer = () => {
               </li>
               <li>Donate</li>
               <li>
-                <a href={`mailto:${URL.email}`}>Contact us</a>
+                <a href={`mailto:${URL.email}`}>Contact</a>
               </li>
             </ul>
           </div>
