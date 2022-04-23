@@ -10,6 +10,7 @@ import { Button } from "components/template/Button";
 import { URL } from "utils/url";
 import { useStore, ActionKind } from 'store';
 import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { errorOption, successOption } from 'utils/Util';
 import { MdOutlineAccountBalanceWallet, MdArrowCircleDown } from 'react-icons/md';
 
 declare var window: any;
@@ -103,11 +104,11 @@ const Navbar = () => {
         setBankMetamask(true);
       }
       else {
-        addToast("Please switch to BSC testnet");
+        addToast("Please switch to BSC testnet", errorOption);
       }
     });
     if (!window.ethereum) {
-      addToast("Please install metamask first");
+      addToast("Please install metamask first", errorOption);
     }
   }, [])
 
@@ -154,9 +155,9 @@ const Navbar = () => {
               iconChildren={<ImAndroid />}
               title="Play Demo"
               style={`primary`}
-            /></div>
+            />
+          </div>
           <div className="block rounded-full bg-[#0084FF] sm:hidden" >
-
             <button className="flex items-center px-1.5 py-1.5 border rounded-full  text-white border-white hover:text-white hover:border-white"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}>
@@ -175,15 +176,45 @@ const Navbar = () => {
             <div className="flex bg-white rounded-full justify-center place-items-end cursor-pointer w-48 h-8 md:h-10">
               {!state.connected &&
                 <div
-                  className="flex bg-white  hover:bg-sky-300  rounded-l-full justify-center items-center cursor-pointer w-40 h-8 md:h-10 text-sm md:text-base"
-                  onClick={() => { connectTo('extension') }}
+                  className="relative bg-white  hover:bg-sky-300  rounded-l-full justify-center items-center cursor-pointer w-40 h-8 md:h-10 text-sm md:text-base"
+                  onMouseEnter={() => setDisplayMenu("block")}
+                  onMouseLeave={() => setDisplayMenu('hidden')}
                 >
-                  Terra Station
+                  <div className="flex h-full  justify-center items-center whitespace-nowrap px-4">
+                    Terra Station
+                  </div>
+                  <div
+                    className={`absolute ${displayMenu} text-white rounded-lg bg-yellow-900 flex flex-col cursor-pointer right-0`}
+                  >
+                    <div
+                      className="hover:bg-white hover:text-black rounded-lg px-4 py-2 flex items-baseline"
+                      onClick={() => connectTo('extension')}
+                    >
+                      <span className="whitespace-nowrap">Terra Station(Browser)</span>&nbsp;&nbsp;
+                      {state.connected &&
+                        <div className="text-[9px]">
+                          {shortenAddress(connectedWallet?.walletAddress)}
+                        </div>
+                      }
+                    </div>
+                    <div
+                      className="hover:bg-white hover:text-black rounded-lg px-4 py-2 flex items-baseline"
+                      onClick={() => connectTo('mobile')}
+                    >
+                      <span className="whitespace-nowrap">Terra Station(QR CODE)</span>&nbsp;&nbsp;
+                      {state.connected &&
+                        <div className="text-[9px]">
+                          {shortenAddress(connectedWallet?.walletAddress)}
+                        </div>
+                      }
+                    </div>
+                  </div>
                 </div>
               }
               {state.connected &&
                 <div
                   className="flex bg-white hover:bg-sky-300 rounded-l-full justify-center items-center cursor-pointer w-40 h-8 md:h-10 text-sm md:text-base"
+                  onClick={() => connectTo('disconnect')}
                 >
                   {(bank && !state.loading) &&
                     <MdOutlineAccountBalanceWallet size={25} color={'#F9D85E'} />
@@ -196,11 +227,11 @@ const Navbar = () => {
                   </span>
                 </div>
               }
-              <div className="flex bg-black/70 justify-center place-items-end cursor-pointer w-1 h-8 md:h-10"></div>
+              <div className="flex bg-black/70 justify-center place-items-end cursor-pointer min-w-[1px] h-8 md:h-10"></div>
 
               {!bankMetamask &&
                 <div
-                  className="flex bg-white hover:bg-sky-300 rounded-r-full justify-center items-center cursor-pointer w-32 h-8 md:h-10 text-sm md:text-base"
+                  className="flex bg-white hover:bg-sky-300 rounded-r-full justify-center items-center cursor-pointer w-32 h-8 md:h-10 text-sm md:text-base px-4"
                   onClick={() => { connectToMetamask() }}
                 >
                   Metamask
