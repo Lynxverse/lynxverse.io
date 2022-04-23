@@ -81,7 +81,7 @@ const Donate = () => {
     gas = gas.mul(12).div(10);
 
     let result = await donateContract.donate({ gasLimit: gas, value: amount });
-    console.log(result);
+console.log(result);
   }
   return (
     <div className="w-full flex flex-col justify-center items-center pt-[120px]">

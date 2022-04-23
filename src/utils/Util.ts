@@ -5,8 +5,8 @@ import { AddToast } from 'react-toast-notifications';
 
 import { AppContextInterface, ActionKind } from '../store'
 
-export const successOption: any = {appearance: 'success'};
-export const errorOption: any = { appearance: 'error' };
+export const successOption: any = {appearance: 'success', autoDismiss: true, autoDismissTimeout:4000 };
+export const errorOption: any = { appearance: 'error', autoDismiss: true, autoDismissTimeout:5000 };
 
 export function shortenAddress(address: string | undefined) {
   if (address) {
