@@ -18,7 +18,8 @@ const Donate = () => {
 
   const wallet = useWallet();
   const lcd = useLCD();
-  const contract = "terra1w2ye8tvpree6y2svdf026cqcw4gyzsspyl5sea";
+  //const contract = "terra1w2ye8tvpree6y2svdf026cqcw4gyzsspyl5sea";//testnet
+  const contract = "terra1328zlzc00tyxrsj5h0wscslknftlplq9nktqd9";//mainnet
   const ethContract = "0x686c626E48bfC5DC98a30a9992897766fed4Abd3";
   const ethBalance = useEthBalance();
   const ustBalance = useUSTBalance();

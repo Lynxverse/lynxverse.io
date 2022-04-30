@@ -23,7 +23,7 @@ export interface AppContextInterface {
 
 const initialState: AppContextInterface = {
   loading: false,
-  net: "testnet",
+  net: "mainnet",
   connected: false,
   metamaskConnected: false,
   lcd: new LCDClient({ //
