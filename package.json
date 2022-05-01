@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@terra-money/terra.js": "^3.0.11",
-    "@terra-money/wallet-provider": "^3.8.1",
+    "@terra-money/terra.js": "^2.0.14",
+    "@terra-money/wallet-provider": "^2.2.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",

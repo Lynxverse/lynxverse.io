@@ -80,10 +80,11 @@ const Navbar = () => {
   }, [connectedWallet, dispatch, lcd])
 
   function connectTo(to: string) {
+console.log(wallet)
     if (to === 'extension') {
-      wallet.connect(wallet.availableConnectTypes[0])
-    } else if (to === 'mobile') {
       wallet.connect(wallet.availableConnectTypes[1])
+    } else if (to === 'mobile') {
+      wallet.connect(wallet.availableConnectTypes[2])
     } else if (to === 'disconnect') {
       wallet.disconnect()
       // dispatch({ type: 'setWallet', message: {} })
