@@ -26,29 +26,34 @@ const IMAGE = {
 
 const  SwiperImage = [
     {
-        title: 'Go to universe',
-        desc: 'Go to universe (university in metaverse) to study about mental health',
-        image: require('../assets/images/University.svg').default,
-    },
-    {
-        title: 'Go to universe',
-        desc: 'Go to universe (university in metaverse) to study about mental health',
-        image: require('../assets/images/University2.svg').default,
+        title: 'Go to university',
+        desc: 'Go to university (university in metaverse) to study about mental health',
+        image: require('../assets/images/Class1.svg').default,
     },
     {
         title: 'Go to sharing center',
         desc: 'Go to sharing center : The center where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
-        image: require('../assets/images/SharingCenter.svg').default,
+        image: require('../assets/images/Class2.svg').default,
     },
     {
         title: 'Go to sharing center',
         desc: 'Go to sharing center : The center where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
-        image: require('../assets/images/SharingCenter2.svg').default,
+        image: require('../assets/images/Park1.svg').default,
+    },
+    {
+        title: 'Go to sharing center',
+        desc: 'Go to sharing center : The center where you can meet and interact with people, share your story, and share your friends/ family case. You can even create event with other people (sharing session)',
+        image: require('../assets/images/Park2.svg').default,
+    },
+    {
+        title: 'Personalize yourself',
+        desc: 'Go to avatar configuration to have your avatar setup! Here you can use your own creative assets or buy from others in marketverse',
+        image: require('../assets/images/Market3.svg').default,
     },
     {
         title: 'Go to marketverse ',
         desc: 'Go to marketverse (marketplace in metaverse) to sell and buy assets. Creators can sell their unique asset to support users (music, mediation style, yoga style, etc)',
-        image: require('../assets/images/Market.svg').default,
+        image: require('../assets/images/Market1.svg').default,
     },
     {
         title: 'Go to marketverse ',
@@ -56,29 +61,34 @@ const  SwiperImage = [
         image: require('../assets/images/Market2.svg').default,
     },
     {
-        title: 'Go to home',
-        desc: 'Home: this is your home, you store your assets safely here (game level, NFT, yoga, meditation, listening music,etc)',
-        image: require('../assets/images/Home.svg').default,
+        title: 'Go to activities',
+        desc: 'You can do activities at home, park, or anywhere you like, to practice or use your NFT assets',
+        image: require('../assets/images/Yoga2.svg').default,
     },
     {
-        title: 'Go to home',
+        title: 'Go to activities',
         desc: 'Home: this is your home, you store your assets safely here (game level, NFT, yoga, meditation, listening music,etc)',
-        image: require('../assets/images/Home2.svg').default,
+        image: require('../assets/images/Yoga1.svg').default,
     },
     {
         title: 'Go to clinicverse',
         desc: 'Go to clinicsverse (clinics in metaverse) for therapy sessions or play our game (solo or multiplayer) with an interactive Al assistant where you can select who or which "form" of the Al you wish to have. The Al can be anime. human, animals, plants, or yourself. whatever you prefer to make you comfortable to talk and share your story with this Al.',
-        image: require('../assets/images/Clinicverse.svg').default,
+        image: require('../assets/images/Clinic1.svg').default,
     },
     {
         title: 'Go to clinicverse',
         desc: 'Go to clinicsverse (clinics in metaverse) for therapy sessions or play our game (solo or multiplayer) with an interactive Al assistant where you can select who or which "form" of the Al you wish to have. The Al can be anime. human, animals, plants, or yourself. whatever you prefer to make you comfortable to talk and share your story with this Al.',
-        image: require('../assets/images/Clinicverse2.svg').default,
+        image: require('../assets/images/Clinic2.svg').default,
     },
     {
-        title: 'Empty Building',
-        desc: 'Empty building or map: for those real world practitioners and organization who wants to connect with real psychology in metaverse world. Those psychology can rent office or a clinics can rent office in the metaverse world to connect with the clients! The rent using stable coin for the payment yet also using stable coin too for those patient or clients who wants to have a real session therapy with psychology in the metaverse',
-        image: require('../assets/images/Clinicverse2.svg').default,
+        title: 'Home',
+        desc: 'This is where people have their homes, place of safekeeping of their courses, NFT, and other assets',
+        image: require('../assets/images/Home1.svg').default,
+    },
+    {
+        title: 'Home',
+        desc: 'This is where people have their homes, place of safekeeping of their courses, NFT, and other assets',
+        image: require('../assets/images/Bedroom4.svg').default,
     },
 ]
 export { IMAGE, SwiperImage }
