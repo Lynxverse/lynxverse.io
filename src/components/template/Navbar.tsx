@@ -182,7 +182,7 @@ console.log(wallet)
                   onMouseLeave={() => setDisplayMenu('hidden')}
                 >
                   <div className="flex h-full  justify-center items-center whitespace-nowrap px-4">
-                    Terra Station
+                    Terra
                   </div>
                   <div
                     className={`absolute ${displayMenu} text-white rounded-lg bg-yellow-900 flex flex-col cursor-pointer right-0`}
