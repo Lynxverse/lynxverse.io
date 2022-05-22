@@ -37,7 +37,7 @@ const About = () => {
             Lynxverse comes as a solutuion, offering Cognitive Behavioral Therapy (CBT) services 
             implemented on Virtual Reality to help and raise awareness of mental health and well-being.
             One of the first on the blockchain focused on such matters with 
-            X to Earn system where users can earn the stable coin such as UST. The “earn” is designed to fully utilize Lynxverse.
+            X to Earn system where users can earn stable coin. The “earn” is designed to fully utilize Lynxverse.
             </p>
             <div className="flex space-x-5 litepaper-button">
             <Button 

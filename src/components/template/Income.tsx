@@ -37,7 +37,7 @@ const Income = () => {
               endeavors and to talk more
               about the issues they face
               Upon doing so, the platform
-              rewards them with stable coin (i.e UST)
+              rewards them with stable coin
               </p>
             </div>
           </div>
@@ -59,7 +59,7 @@ const Income = () => {
               <p className="px-3 font-title text-[0.7rem]  text-white md:text-[22px]">
               Users
               are rewarded in stable
-              coin such as UST for their activity on the
+              coin for their activity on the
               gamified CBT scenarios
               awarding them for their time
               spent
@@ -88,8 +88,8 @@ const Income = () => {
               awareness of mental health
               issues and teaches more about
               the illnesses Users who
-              participate are rewarded
-              stable coin UST
+              participate are rewarded with
+              stable coin 
               </p>
             </div>
           </div>
