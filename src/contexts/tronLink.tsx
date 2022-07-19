@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import create from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 import { BigNumber } from "ethers";
-import { WEFUND_TRON_WALLET, ERC20_ABI } from "../config/constants";
+import { TRON_WALLET, ERC20_ABI } from "../config/constants";
 
 declare let window: any;
 
@@ -28,7 +28,7 @@ export interface TronLinkStore {
   readonly getBalance: () => BigNumber;
   readonly getBalanceString: () => string;
   readonly sendTokens: (
-    amount: number,
+    amount: BigNumber,
     denom: string,
     account: string,
     native: boolean
@@ -84,7 +84,7 @@ export const useTronLinkStore = create(
       return balance.toString();
     },
     sendTokens: async (
-      amount: number,
+      amount: BigNumber,
       denom: string,
       address: string,
       native: boolean
@@ -94,8 +94,8 @@ export const useTronLinkStore = create(
 
       if (native) {
         const tx = await tronWeb.transactionBuilder.sendTrx(
-          WEFUND_TRON_WALLET,
-          amount,
+          TRON_WALLET,
+          amount.toString(),
           account
         );
         const signedTx = await tronWeb.trx.sign(tx);
@@ -106,7 +106,7 @@ export const useTronLinkStore = create(
         // const balance = await contract.balanceOf(account).call();
         // const val = BigNumber.from(balance);
 
-        await contract.transfer(WEFUND_TRON_WALLET, amount).send();
+        await contract.transfer(TRON_WALLET, amount.toString()).send();
       }
     },
   }))
@@ -133,9 +133,11 @@ const WalletSubscription = () => {
         const balance = await tronWeb.trx.getBalance(
           useTronLinkStore.getState().account
         );
-console.log(balance)
-        useTronLinkStore.setState({ balance: BigNumber.from(balance) });
-        useTronLinkStore.setState({ initialized: true });
+console.log(balance.toString())
+        useTronLinkStore.setState({ 
+          balance: BigNumber.from(balance), 
+          initialized: true 
+        });
       }
     );
   }, []);

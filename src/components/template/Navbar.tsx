@@ -11,7 +11,6 @@ import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
 import { URL } from "utils/url";
 import { useStore, ActionKind } from '../../contexts/store';
-import { errorOption, successOption } from 'utils/Util';
 import { MdOutlineAccountBalanceWallet, MdArrowCircleDown } from 'react-icons/md';
 
 declare var window: any;
@@ -125,7 +124,7 @@ const Navbar = () => {
               <div className='connect-wallet md:text-base pl-1'><ImCoinDollar /></div>
               Connect Wallet
             </div>
-            <div className="flex bg-white rounded-full justify-center place-items-end cursor-pointer w-52 h-8 md:h-10">
+            <div className="flex bg-white rounded-full justify-center place-items-end cursor-pointer w-60 h-8 md:h-10">
               {!state.connected &&
                 <div
                   className="relative bg-white  hover:bg-sky-300  rounded-l-full justify-center items-center cursor-pointer w-40 h-8 md:h-10 text-sm md:text-base"

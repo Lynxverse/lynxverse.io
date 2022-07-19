@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import create from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 import { BigNumber, ethers } from "ethers";
-import { WEFUND_BSC_ADDRESS, ERC20_ABI } from "../config/constants";
+import { BSC_WALLET, ERC20_ABI } from "../config/constants";
 
 declare let window: any;
 
@@ -29,7 +29,7 @@ export interface MetamaskStore {
   readonly getBalance: () => BigNumber;
   readonly getBalanceString: () => string;
   readonly sendTokens: (
-    amount: number,
+    amount: BigNumber,
     denom: string,
     account: string,
     native: boolean
@@ -118,7 +118,7 @@ export const useMetamaskStore = create(
       return balance.toString();
     },
     sendTokens: async (
-      amount: number,
+      amount: BigNumber,
       denom: string,
       address: string,
       native: boolean
@@ -133,7 +133,7 @@ export const useMetamaskStore = create(
       if (native) {
         const tx = {
           from: sender,
-          to: WEFUND_BSC_ADDRESS,
+          to: BSC_WALLET,
           value: amount.toString(),
           nonce: nonce,
           // gasLimit: ethers.utils.hexlify(gas_limit), // 100000
@@ -145,7 +145,7 @@ export const useMetamaskStore = create(
         const contract = new ethers.Contract(address, ERC20_ABI, signer);
         // const res = await contract.balanceOf(get().account);
         // const val = BigNumber.from(res);
-        await contract.transfer(WEFUND_BSC_ADDRESS, amount);
+        await contract.transfer(BSC_WALLET, amount);
       }
     },
   }))

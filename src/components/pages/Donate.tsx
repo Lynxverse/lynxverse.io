@@ -4,7 +4,8 @@ import { BigNumber, ethers } from "ethers";
 import { toast } from 'react-toastify';
 
 import { useStore, useWallet, useLCD, useUSTBalance } from '../../contexts/store';
-import { estimateSend, checkNetwork, errorOption } from 'utils/Util';
+import { estimateSend, checkNetwork } from 'utils/Util';
+import { ERROR_OPTION, BSC_WALLET, TRON_WALLET, TERRA_WALLET, SUCCESS_OPTION } from 'config/constants';
 import ethJson from './Donate.json';
 import { useMetamaskWallet } from 'contexts/metamask';
 import { useTronLink } from 'contexts/tronLink';
@@ -18,18 +19,19 @@ const Donate = () => {
   const { state, dispatch } = useStore();
 
   const contract = "terra1328zlzc00tyxrsj5h0wscslknftlplq9nktqd9";//mainnet
+  //const contract = "terra1w2ye8tvpree6y2svdf026cqcw4gyzsspyl5sea";//testnet
   const ethContract = "0x686c626E48bfC5DC98a30a9992897766fed4Abd3";
 
   const wallet = useWallet();
   const lcd = useLCD();
   const ustBalance = useUSTBalance();
-  //const contract = "terra1w2ye8tvpree6y2svdf026cqcw4gyzsspyl5sea";//testnet
+
   const metamask = useMetamaskWallet();
   const ethBalance = metamask.balance;
 
   const tronLink = useTronLink();
   const trxBalance = tronLink.balance;
-  
+
   async function donate_ust() {
     if (checkNetwork(wallet, state) == false)
       return;
@@ -38,7 +40,7 @@ const Donate = () => {
       return;
 
     if (!(parseFloat(ustAmount) > 0)) {
-      toast("Invalid input", errorOption);
+      toast("Invalid input", ERROR_OPTION);
       return;
     }
 
@@ -58,17 +60,17 @@ const Donate = () => {
 
   async function donate_eth() {
     if (!(parseFloat(ethAmount) > 0)) {
-      toast("Invalid input", errorOption);
+      toast("Invalid input", ERROR_OPTION);
       return;
     }
 
     if (!metamask.initialized) {
-      toast("Please connect metamask first", errorOption);
+      toast("Please connect metamask first", ERROR_OPTION);
       return
     }
 
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const { chainId } = await provider.getNetwork()
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // const { chainId } = await provider.getNetwork()
     // if (chainId != 1) {
     //   toast("Invalid network, please switch to Ethereum", errorOption);
     //   return
@@ -76,35 +78,52 @@ const Donate = () => {
 
     const amount = ethers.utils.parseUnits(ethAmount, "ether");
     if (amount.gt(ethBalance)) {
-      toast("Not sufficient balance", errorOption);
+      toast("Not sufficient balance", ERROR_OPTION);
       return;
     }
 
-    const signer = provider.getSigner();
-    const donateContract = new ethers.Contract(ethContract, ethJson.abi, signer);
+    try{
+      await metamask.sendTokens(amount, "", "", true);
+      toast("Success!", SUCCESS_OPTION);
+    }
+    catch(e){
+      toast("Failed", ERROR_OPTION);
+      console.log(e);
+    }
 
-//     let gas = await donateContract.estimateGas.donate({ value: amount });
-//     gas = gas.mul(12).div(10);
+    // const signer = provider.getSigner();
+    // const donateContract = new ethers.Contract(ethContract, ethJson.abi, signer);
 
-//     let result = await donateContract.donate({ gasLimit: gas, value: amount });
-// console.log(result);
+    //     let gas = await donateContract.estimateGas.donate({ value: amount });
+    //     gas = gas.mul(12).div(10);
+
+    //     let result = await donateContract.donate({ gasLimit: gas, value: amount });
+    // console.log(result);
   }
 
   async function donate_trx() {
     if (!(parseFloat(trxAmount) > 0)) {
-      toast("Invalid input", errorOption);
+      toast("Invalid input", ERROR_OPTION);
       return;
     }
-
+console.log(tronLink)
     if (!tronLink.initialized) {
-      toast("Please connect metamask first", errorOption);
+      toast("Please connect Tron Link first", ERROR_OPTION);
       return
     }
 
-    const amount = BigNumber.from(parseFloat(ethAmount) * 10 ** 6);
+    const amount = BigNumber.from(parseFloat(trxAmount) * 10 ** 6);
     if (amount.gt(trxBalance)) {
-      toast("Not sufficient balance", errorOption);
+      toast("Not sufficient balance", ERROR_OPTION);
       return;
+    }
+    try{
+      await tronLink.sendTokens(amount, "", "", true);
+      toast("Success!", SUCCESS_OPTION);
+    }
+    catch(e){
+      toast("Failed", ERROR_OPTION);
+      console.log(e);
     }
   }
   return (

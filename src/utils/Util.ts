@@ -1,12 +1,10 @@
 
 import { MsgExecuteContract, WasmAPI, Coin, LCDClient, Fee } from '@terra-money/terra.js'
 import { ConnectedWallet } from '@terra-money/wallet-provider'
-import { AddToast } from 'react-toast-notifications';
+import { toast } from 'react-toastify';
 
 import { AppContextInterface, ActionKind } from '../contexts/store'
-
-export const successOption: any = {appearance: 'success', autoDismiss: true, autoDismissTimeout:4000 };
-export const errorOption: any = { appearance: 'error', autoDismiss: true, autoDismissTimeout:5000 };
+import { ERROR_OPTION, SUCCESS_OPTION } from 'config/constants';
 
 export function shortenAddress(address: string | undefined) {
   if (address) {
@@ -40,7 +38,7 @@ export async function estimateSend(
       accountInfo = e;
     })
     .catch((e) => {
-      // addToast(e.message, errorOption);
+      toast(e.message, ERROR_OPTION);
       console.log(e.message);
     })
 
@@ -69,7 +67,7 @@ export async function estimateSend(
       rawFee = e;
     })
     .catch((e) => {
-      // addToast(e.message, errorOption);
+      toast(e.message, ERROR_OPTION);
       console.log(e.message);
     })
 
@@ -86,16 +84,16 @@ export async function estimateSend(
     })
     .then(async (e) => {
       if (e.success) {
-        // addToast(message, successOption);
+        toast(message, SUCCESS_OPTION);
         return e.result.txhash;
       } else {
-        // addToast(e.result.raw_log, errorOption);
+        toast(e.result.raw_log, ERROR_OPTION);
         console.log(e.result.raw_log);
         return undefined;
       }
     })
     .catch((e) => {
-      // addToast(e.message, errorOption);
+      toast(e.message, ERROR_OPTION);
       console.log(e.message);
       return undefined;
     })
@@ -104,20 +102,20 @@ export async function estimateSend(
 export function checkNetwork(wallet: ConnectedWallet | undefined, state: AppContextInterface) {
   //----------verify connection--------------------------------
   if (wallet === undefined) {
-    // addToast("Please connect wallet first!", errorOption);
+    toast("Please connect wallet first!", ERROR_OPTION);
     console.log("Please connect wallet first!");
     return false;
   }
   else {
-    // addToast.dismiss();
+    toast.dismiss();
   }
 
   if (state.net == 'mainnet' && wallet.network.name == 'testnet') {
-    // addToast("Please switch to mainnet!", errorOption);
+    toast("Please switch to mainnet!", ERROR_OPTION);
     return false;
   }
   if (state.net == 'testnet' && wallet.network.name == 'mainnet') {
-    // addToast("Please switch to Testnet!", errorOption);
+    toast("Please switch to Testnet!", ERROR_OPTION);
     return false;
   }
   return true;
