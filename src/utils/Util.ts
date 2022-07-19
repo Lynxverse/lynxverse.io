@@ -3,7 +3,7 @@ import { MsgExecuteContract, WasmAPI, Coin, LCDClient, Fee } from '@terra-money/
 import { ConnectedWallet } from '@terra-money/wallet-provider'
 import { AddToast } from 'react-toast-notifications';
 
-import { AppContextInterface, ActionKind } from '../store'
+import { AppContextInterface, ActionKind } from '../contexts/store'
 
 export const successOption: any = {appearance: 'success', autoDismiss: true, autoDismissTimeout:4000 };
 export const errorOption: any = { appearance: 'error', autoDismiss: true, autoDismissTimeout:5000 };
@@ -27,7 +27,6 @@ export async function estimateSend(
   msgs: MsgExecuteContract[],
   message: string,
   memo: string,
-  addToast: AddToast
 ) {
   console.log(msgs);
   const obj = new Fee(10_000, { uusd: 4500 })
@@ -41,7 +40,7 @@ export async function estimateSend(
       accountInfo = e;
     })
     .catch((e) => {
-      addToast(e.message, errorOption);
+      // addToast(e.message, errorOption);
       console.log(e.message);
     })
 
@@ -70,7 +69,7 @@ export async function estimateSend(
       rawFee = e;
     })
     .catch((e) => {
-      addToast(e.message, errorOption);
+      // addToast(e.message, errorOption);
       console.log(e.message);
     })
 
@@ -87,25 +86,25 @@ export async function estimateSend(
     })
     .then(async (e) => {
       if (e.success) {
-        addToast(message, successOption);
+        // addToast(message, successOption);
         return e.result.txhash;
       } else {
-        addToast(e.result.raw_log, errorOption);
+        // addToast(e.result.raw_log, errorOption);
         console.log(e.result.raw_log);
         return undefined;
       }
     })
     .catch((e) => {
-      addToast(e.message, errorOption);
+      // addToast(e.message, errorOption);
       console.log(e.message);
       return undefined;
     })
 }
 
-export function checkNetwork(wallet: ConnectedWallet | undefined, state: AppContextInterface, addToast: AddToast) {
+export function checkNetwork(wallet: ConnectedWallet | undefined, state: AppContextInterface) {
   //----------verify connection--------------------------------
   if (wallet === undefined) {
-    addToast("Please connect wallet first!", errorOption);
+    // addToast("Please connect wallet first!", errorOption);
     console.log("Please connect wallet first!");
     return false;
   }
@@ -114,11 +113,11 @@ export function checkNetwork(wallet: ConnectedWallet | undefined, state: AppCont
   }
 
   if (state.net == 'mainnet' && wallet.network.name == 'testnet') {
-    addToast("Please switch to mainnet!", errorOption);
+    // addToast("Please switch to mainnet!", errorOption);
     return false;
   }
   if (state.net == 'testnet' && wallet.network.name == 'mainnet') {
-    addToast("Please switch to Testnet!", errorOption);
+    // addToast("Please switch to Testnet!", errorOption);
     return false;
   }
   return true;

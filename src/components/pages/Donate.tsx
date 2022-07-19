@@ -1,38 +1,44 @@
 import React, { useState } from 'react'
 import { MsgExecuteContract, WasmAPI, Coin } from '@terra-money/terra.js'
 import { BigNumber, ethers } from "ethers";
-import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { toast } from 'react-toastify';
 
-import { useStore, useWallet, useLCD, useEthBalance, useUSTBalance } from '../../store';
+import { useStore, useWallet, useLCD, useUSTBalance } from '../../contexts/store';
 import { estimateSend, checkNetwork, errorOption } from 'utils/Util';
 import ethJson from './Donate.json';
+import { useMetamaskWallet } from 'contexts/metamask';
+import { useTronLink } from 'contexts/tronLink';
 
 declare var window: any;
 
 const Donate = () => {
   const [ustAmount, setUstAmount] = useState('');
   const [ethAmount, setEthAmount] = useState('');
-
+  const [trxAmount, setTrxAmount] = useState('');
   const { state, dispatch } = useStore();
-  const { addToast } = useToasts();
+
+  const contract = "terra1328zlzc00tyxrsj5h0wscslknftlplq9nktqd9";//mainnet
+  const ethContract = "0x686c626E48bfC5DC98a30a9992897766fed4Abd3";
 
   const wallet = useWallet();
   const lcd = useLCD();
-  //const contract = "terra1w2ye8tvpree6y2svdf026cqcw4gyzsspyl5sea";//testnet
-  const contract = "terra1328zlzc00tyxrsj5h0wscslknftlplq9nktqd9";//mainnet
-  const ethContract = "0x686c626E48bfC5DC98a30a9992897766fed4Abd3";
-  const ethBalance = useEthBalance();
   const ustBalance = useUSTBalance();
+  //const contract = "terra1w2ye8tvpree6y2svdf026cqcw4gyzsspyl5sea";//testnet
+  const metamask = useMetamaskWallet();
+  const ethBalance = metamask.balance;
 
+  const tronLink = useTronLink();
+  const trxBalance = tronLink.balance;
+  
   async function donate_ust() {
-    if (checkNetwork(wallet, state, addToast) == false)
+    if (checkNetwork(wallet, state) == false)
       return;
 
     if (!wallet?.walletAddress)
       return;
 
     if (!(parseFloat(ustAmount) > 0)) {
-      addToast("Invalid input", errorOption);
+      toast("Invalid input", errorOption);
       return;
     }
 
@@ -47,42 +53,59 @@ const Donate = () => {
       msg,
       { uusd: amount }
     );
-    await estimateSend(wallet, lcd, [donate_msg], "Success donate", "donate", addToast);
+    await estimateSend(wallet, lcd, [donate_msg], "Success donate", "donate");
   }
 
   async function donate_eth() {
     if (!(parseFloat(ethAmount) > 0)) {
-      addToast("Invalid input", errorOption);
+      toast("Invalid input", errorOption);
       return;
     }
 
-    if (!state.metamaskConnected) {
-      addToast("Please connect metamask first", errorOption);
+    if (!metamask.initialized) {
+      toast("Please connect metamask first", errorOption);
       return
     }
 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const { chainId } = await provider.getNetwork()
-    if (chainId != 97) {
-      addToast("Invalid network, please switch to BSC Testnet", errorOption);
-      return
-    }
+    // if (chainId != 1) {
+    //   toast("Invalid network, please switch to Ethereum", errorOption);
+    //   return
+    // }
 
-    // const amount = BigNumber.from(parseFloat(ethAmount) * 10 ** 8);
     const amount = ethers.utils.parseUnits(ethAmount, "ether");
-    if (amount.gt(state.ethBalance)) {
-      addToast("Not sufficient balance", errorOption);
+    if (amount.gt(ethBalance)) {
+      toast("Not sufficient balance", errorOption);
       return;
     }
 
     const signer = provider.getSigner();
     const donateContract = new ethers.Contract(ethContract, ethJson.abi, signer);
 
-    let gas = await donateContract.estimateGas.donate({ value: amount });
-    gas = gas.mul(12).div(10);
+//     let gas = await donateContract.estimateGas.donate({ value: amount });
+//     gas = gas.mul(12).div(10);
 
-    let result = await donateContract.donate({ gasLimit: gas, value: amount });
-console.log(result);
+//     let result = await donateContract.donate({ gasLimit: gas, value: amount });
+// console.log(result);
+  }
+
+  async function donate_trx() {
+    if (!(parseFloat(trxAmount) > 0)) {
+      toast("Invalid input", errorOption);
+      return;
+    }
+
+    if (!tronLink.initialized) {
+      toast("Please connect metamask first", errorOption);
+      return
+    }
+
+    const amount = BigNumber.from(parseFloat(ethAmount) * 10 ** 6);
+    if (amount.gt(trxBalance)) {
+      toast("Not sufficient balance", errorOption);
+      return;
+    }
   }
   return (
     <div className="w-full flex flex-col justify-center items-center pt-[120px]">
@@ -111,8 +134,21 @@ console.log(result);
             onChange={(e) => { setEthAmount(e.target.value) }}
             placeholder="0 ETH"
           />
-          <span className="text-white self-end">Max: {ethBalance}</span>
+          <span className="text-white self-end">Max: {metamask.getBalanceString()}</span>
           <button className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={() => { donate_eth() }}>Donate</button>
+        </div>
+
+        <div className="flex flex-col justify-center align-center pt-[50px] w-[240px] md:w-[440px]">
+          <span className="text-lg text-white mt-6 justify-center">Via TRX with TronLink</span>
+          <input
+            className="mt-6 appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"
+            type="text"
+            value={trxAmount}
+            onChange={(e) => { setTrxAmount(e.target.value) }}
+            placeholder="0 TRX"
+          />
+          <span className="text-white self-end">Max: {tronLink.getBalanceString()}</span>
+          <button className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={() => { donate_trx() }}>Donate</button>
         </div>
       </div>
       <div className="bg-sky-200 border-t-4 border-cyan-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">

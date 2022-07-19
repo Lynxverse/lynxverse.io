@@ -3,13 +3,14 @@ import { ImAndroid, ImCoinDollar } from "react-icons/im";
 import { LCDClient, Coins } from '@terra-money/terra.js';
 import { useWallet, useConnectedWallet } from '@terra-money/wallet-provider'
 import { BigNumber, ethers } from "ethers";
+import { useMetamaskWallet } from "../../contexts/metamask";
+import { useTronLink } from "../../contexts/tronLink";
 
 import menuButton from '../../assets/images/menuButton.svg';
 import { IMAGE } from "utils/images";
 import { Button } from "components/template/Button";
 import { URL } from "utils/url";
-import { useStore, ActionKind } from 'store';
-import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { useStore, ActionKind } from '../../contexts/store';
 import { errorOption, successOption } from 'utils/Util';
 import { MdOutlineAccountBalanceWallet, MdArrowCircleDown } from 'react-icons/md';
 
@@ -28,10 +29,8 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const { state, dispatch } = useStore();
   const [bank, setBank] = useState(false);
-  const [bankMetamask, setBankMetamask] = useState(false);
-  const [addressMetamask, setAddressMetamask] = useState('');
+
   const [displayMenu, setDisplayMenu] = useState("hidden");
-  const { addToast } = useToasts();
 
   let wallet = useWallet()
   let connectedWallet = useConnectedWallet()
@@ -80,7 +79,6 @@ const Navbar = () => {
   }, [connectedWallet, dispatch, lcd])
 
   function connectTo(to: string) {
-console.log(wallet)
     if (to === 'extension') {
       wallet.connect(wallet.availableConnectTypes[1])
     } else if (to === 'mobile') {
@@ -91,59 +89,12 @@ console.log(wallet)
     }
   }
 
-  useEffect(() => {
-    window.ethereum?.on('chainChanged', async (chainId: string) => {
-      if (chainId == '0x61') {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const accounts = await provider.send("eth_requestAccounts", []);
-        const account = accounts[0];
+  const metamask = useMetamaskWallet();
+  const connectToMetamask = () => metamask.connect();
 
-        let balance = await provider.getBalance(account);
+  const tronLink = useTronLink();
+  const connectToTron = () => tronLink.connect();
 
-        dispatch({ type: ActionKind.setEthBalance, payload: balance });
-        dispatch({ type: ActionKind.setMetamaskConnected, payload: true });
-        setBankMetamask(true);
-      }
-      else {
-        addToast("Please switch to BSC testnet", errorOption);
-      }
-    });
-    if (!window.ethereum) {
-      addToast("Please install metamask first", errorOption);
-    }
-  }, [])
-
-  async function connectToMetamask() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const accounts = await provider.send("eth_requestAccounts", []);
-    const account = accounts[0];
-
-    const { chainId } = await provider.getNetwork()
-    if (chainId != 97) {
-      window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [{
-          chainId: "0x61",
-          rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
-          chainName: "BSC Testnet",
-          nativeCurrency: {
-            name: "BNB",
-            symbol: "BNB",
-            decimals: 18
-          },
-          blockExplorerUrls: ["https://testnet.bscscan.com"]
-        }]
-      });
-    }
-    else {
-      let balance = await provider.getBalance(account);
-
-      dispatch({ type: ActionKind.setEthBalance, payload: balance });
-      dispatch({ type: ActionKind.setMetamaskConnected, payload: true });
-      setBankMetamask(true);
-    }
-    setAddressMetamask(account);
-  }
   return (
     <div className={"fixed z-20 w-full bg-black/70 backdrop-blur-md h-32" + (navbarOpen ? " h" : "0")}>
       <div className="mx-auto flex w-11/12 justify-between py-5">
@@ -170,11 +121,11 @@ console.log(wallet)
           }
 
             id="example-navbar-danger">
-            <div className="flex rounded-full bg-[#0084FF] space-x-2 text-stone-200 justify-center items-center cursor-pointer w-32 md:w-36 h-8 md:h-10 text-sm md:text-base">
+            <div className="flex rounded-full bg-[#0084FF] space-x-2 text-stone-200 justify-center items-center cursor-pointer w-50 md:w-36 h-8 md:h-10 text-sm md:text-base">
               <div className='connect-wallet md:text-base pl-1'><ImCoinDollar /></div>
               Connect Wallet
             </div>
-            <div className="flex bg-white rounded-full justify-center place-items-end cursor-pointer w-48 h-8 md:h-10">
+            <div className="flex bg-white rounded-full justify-center place-items-end cursor-pointer w-52 h-8 md:h-10">
               {!state.connected &&
                 <div
                   className="relative bg-white  hover:bg-sky-300  rounded-l-full justify-center items-center cursor-pointer w-40 h-8 md:h-10 text-sm md:text-base"
@@ -230,22 +181,48 @@ console.log(wallet)
               }
               <div className="flex bg-black/70 justify-center place-items-end cursor-pointer min-w-[1px] h-8 md:h-10"></div>
 
-              {!bankMetamask &&
+              {!metamask.connected &&
                 <div
-                  className="flex bg-white hover:bg-sky-300 rounded-r-full justify-center items-center cursor-pointer w-32 h-8 md:h-10 text-sm md:text-base px-4"
+                  className="flex bg-white hover:bg-sky-300 justify-center items-center cursor-pointer w-32 h-8 md:h-10 text-sm md:text-base px-4"
                   onClick={() => { connectToMetamask() }}
                 >
                   Metamask
                 </div>
               }
-              {bankMetamask &&
+              {metamask.connected &&
                 <div
-                  className="flex bg-white  hover:bg-sky-300 rounded-r-full justify-center items-center cursor-pointer w-40 h-8 md:h-10 text-sm md:text-base"
+                  className="flex bg-white  hover:bg-sky-300 justify-center items-center cursor-pointer w-40 h-8 md:h-10 text-sm md:text-base"
                 >
                   <MdOutlineAccountBalanceWallet size={25} color={'#F9D85E'} />
                   <span className="ml-2">
-                    {shortenAddress(addressMetamask.toString())}
+                    {shortenAddress(metamask.account)}
                   </span>
+                </div>
+              }
+              <div className="flex bg-black/70 justify-center place-items-end cursor-pointer min-w-[1px] h-8 md:h-10"></div>
+              {!tronLink.connected &&
+                <div
+                  className="flex bg-white hover:bg-sky-300 rounded-r-full justify-center items-center cursor-pointer w-32 h-8 md:h-10 text-sm md:text-base px-4"
+                  onClick={() => { connectToTron() }}
+                >
+                  TronLink
+                </div>
+              }
+              {tronLink.connected &&
+                <div
+                  className="flex bg-white  hover:bg-sky-300 rounded-r-full justify-center items-center cursor-pointer w-40 h-8 md:h-10 text-sm md:text-base"
+                >
+                  {!tronLink.initialized &&
+                    <MdOutlineAccountBalanceWallet size={25} color={'#F9D85E'} />
+                  }
+                  {tronLink.initialized &&
+                    <>
+                      <MdOutlineAccountBalanceWallet size={25} color={'#F9D85E'} />
+                      <span className="ml-2">
+                        {shortenAddress(tronLink.account)}
+                      </span>
+                    </>
+                  }
                 </div>
               }
             </div>

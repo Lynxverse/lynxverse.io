@@ -25,13 +25,16 @@
     "react-scripts": "5.0.0",
     "react-slick": "^0.28.1",
     "react-toast-notifications": "^2.5.1",
+    "react-toastify": "^9.0.7",
+    "react-tracked": "^1.7.9",
     "react-tsparticles": "^1.41.5",
     "slick-carousel": "^1.8.1",
     "stream-browserify": "^3.0.0",
     "swiper": "^8.0.7",
     "tsparticles-preset-snow": "^1.41.5",
     "typescript": "^4.5.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.0.0-rc.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
